@@ -40,8 +40,16 @@ const postApiInfoToCountryDb = async () => {
 };
 
 const getSpecificCountry = async (idPais) => {
-    const specificCountry = await Country.findByPk(idPais);
-    return specificCountry;
+    const specificCountry = await Country.findOne({
+        where: {
+            id: idPais,
+        },
+        include: {
+            model: Activity,
+            attributes: ['name', 'difficulty', 'duration', 'season' ]
+        },
+    });
+    return specificCountry;0
 }
 
 const getSpecificCountries = async (name) => {
