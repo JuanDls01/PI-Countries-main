@@ -34,7 +34,7 @@ const getApiInfo = async () => {
     return apiInfo;
 };
 
-const postApiInfoToDb = async () => {
+const postApiInfoToCountryDb = async () => {
     const apiInfo = await getApiInfo();
     await apiInfo.forEach(async el => await Country.create(el));
 };
@@ -74,7 +74,7 @@ const getAllDbInfo = async () => {
 
 
 module.exports = {
-    postApiInfoToDb,
+    postApiInfoToCountryDb,
     getAllDbInfo,
     getSpecificCountries,
     getSpecificCountry,

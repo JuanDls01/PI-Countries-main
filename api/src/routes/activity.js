@@ -1,11 +1,14 @@
 const { Router } = require('express');
+const { activityCreator } = require('../controllers/activityControllers.js')
 
 
 const router = Router();
 
-router.get('/', async (req,res,next) => {
+router.post('/', async (req,res,next) => {
     try{
-        res.send('Hola como andas');
+        let {name, difficulty, duration, season, countries} = req.body;
+        activityCreator(name, difficulty, duration, season, countries);
+        res.send('Character created succesfully');
     } catch (error) {
         next(error);
     }
