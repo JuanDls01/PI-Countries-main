@@ -9,7 +9,7 @@ const getApiInfo = async () => {
         if(el.capital){
             return {
                 id: el.cca3,
-                name: el.name.official,
+                name: el.translations.spa.common,
                 imgFlag: el.flags[0],
                 continent: el.region[0],
                 capital: el.capital[0],
@@ -20,7 +20,7 @@ const getApiInfo = async () => {
         } else {
             return {
                 id: el.cca3,
-                name: el.name.official,
+                name: el.translations.spa.common,
                 imgFlag: el.flags[0],
                 continent: el.region[0],
                 capital: 'no cap',
