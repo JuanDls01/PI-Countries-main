@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { Country, Activity } = require('../db.js');
-const { DataTypes } = require('sequelize');
+const { DataTypes, Op } = require('sequelize');
 
 const getApiInfo = async () => {
     //Me traigo toda la info de la api:
@@ -45,7 +45,30 @@ const postApiInfoToDb = async () => {
     await apiInfo.forEach(async el => await Country.create(el));
 };
 
-const getDbInfo = async () => {
+const getSpecificDbInfo = async (name) => {
+    const specificInfo = await Country.findAll({
+        where: {
+            name: {
+                [Op.or]: {
+                    [Op.like]: `%${name}%`,
+                    [Op.like]: `${name}%`
+                }
+            }
+        }
+        // ,
+        // include: {
+        //     model: Activity,
+        //     attributes: ['name'],
+        //     through: {
+        //         attributes: [],
+        //     }
+        // }
+    })
+    console.log(specificInfo);
+    return specificInfo;
+}
+
+const getAllDbInfo = async () => {
     const dbInfo = await Country.findAll({
         include: {
             model: Activity,
@@ -62,5 +85,6 @@ const getDbInfo = async () => {
 
 module.exports = {
     postApiInfoToDb,
-    getDbInfo
+    getAllDbInfo,
+    getSpecificDbInfo
 }

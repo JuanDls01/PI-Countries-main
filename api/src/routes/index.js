@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { postApiInfoToDb, getDbInfo } = require('../controllers');
+const { postApiInfoToDb, getSpecificDbInfo, getAllDbInfo } = require('../controllers');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -9,18 +9,37 @@ const COUNTRIES = '/countries';
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.get(COUNTRIES, async (req, res) => {
-    await postApiInfoToDb();
-    const allCountries = await getDbInfo();
-    //console.log(allCountries);
-    const {name} = req.query;
-    if (name) {
-        let countryName = await allCountries.filter(el => el.name.toLowerCase().include(name.toLowerCase()));
-        countryName?
-        res.status(200).send(countryName):
-        res.status(404).send('No está la ciudad, sorry')
-    } else {
-        res.status(200).send(allCountries)
+router.get(COUNTRIES, async (req, res, next) => {
+    try {
+        const {name} = req.query;
+        let allCountries = await getAllDbInfo();
+        console.log(allCountries);
+        if (allCountries) {
+            if (name) {
+                let specificCountries = await getSpecificDbInfo(name)
+                // allCountries.filter(el => el.dataValues.name.toLowerCase().includes(name.toLowerCase()));
+                specificCountries ?
+                res.status(200).json(specificCountries) :
+                res.status(404).send('No está el país, sorry');
+            } else {
+                res.status(200).json(allCountries)
+            }
+        } else {
+            await postApiInfoToDb();
+            allCountries = await getAllDbInfo();
+            if (name) {
+                let specificCountries = await getSpecificDbInfo(name)
+                // allCountries.filter(el => el.dataValues.name.toLowerCase().includes(name.toLowerCase()));
+                specificCountries ?
+                res.status(200).json(specificCountries) :
+                res.status(404).send('No está el país, sorry');
+            } else {
+                res.status(200).json(allCountries)
+            }
+        }
+    }
+    catch (error){
+        next(error)
     }
 })
 
