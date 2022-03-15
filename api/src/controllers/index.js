@@ -39,7 +39,12 @@ const postApiInfoToDb = async () => {
     await apiInfo.forEach(async el => await Country.create(el));
 };
 
-const getSpecificDbInfo = async (name) => {
+const getSpecificCountry = async (idPais) => {
+    const specificCountry = await Country.findByPk(idPais);
+    return specificCountry;
+}
+
+const getSpecificCountries = async (name) => {
     const nameUpper = name.charAt(0).toUpperCase() + name.slice(1);
     const specificInfo = await Country.findAll({
         where: {
@@ -50,7 +55,7 @@ const getSpecificDbInfo = async (name) => {
             }
         }
     })
-    console.log(specificInfo);
+    //console.log(specificInfo);
     return specificInfo;
 }
 
@@ -71,5 +76,6 @@ const getAllDbInfo = async () => {
 module.exports = {
     postApiInfoToDb,
     getAllDbInfo,
-    getSpecificDbInfo
+    getSpecificCountries,
+    getSpecificCountry,
 }
