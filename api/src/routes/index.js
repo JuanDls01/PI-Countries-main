@@ -13,11 +13,9 @@ router.get(COUNTRIES, async (req, res, next) => {
     try {
         const {name} = req.query;
         let allCountries = await getAllDbInfo();
-        console.log(allCountries);
         if (allCountries) {
             if (name) {
                 let specificCountries = await getSpecificDbInfo(name)
-                // allCountries.filter(el => el.dataValues.name.toLowerCase().includes(name.toLowerCase()));
                 specificCountries ?
                 res.status(200).json(specificCountries) :
                 res.status(404).send('No está el país, sorry');
@@ -29,7 +27,6 @@ router.get(COUNTRIES, async (req, res, next) => {
             allCountries = await getAllDbInfo();
             if (name) {
                 let specificCountries = await getSpecificDbInfo(name)
-                // allCountries.filter(el => el.dataValues.name.toLowerCase().includes(name.toLowerCase()));
                 specificCountries ?
                 res.status(200).json(specificCountries) :
                 res.status(404).send('No está el país, sorry');

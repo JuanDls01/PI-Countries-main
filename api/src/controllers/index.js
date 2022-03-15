@@ -36,33 +36,19 @@ const getApiInfo = async () => {
 
 const postApiInfoToDb = async () => {
     const apiInfo = await getApiInfo();
-    // const countryEach = apiInfo.map(el => {
-    //     for (let i=0; i<el.length; i++) return el[i];
-    // })
-    // countryEach.forEach(el => {
-    //     Country.create()
-    // })
     await apiInfo.forEach(async el => await Country.create(el));
 };
 
 const getSpecificDbInfo = async (name) => {
+    const nameUpper = name.charAt(0).toUpperCase() + name.slice(1);
     const specificInfo = await Country.findAll({
         where: {
             name: {
                 [Op.or]: {
-                    [Op.like]: `%${name}%`,
-                    [Op.like]: `${name}%`
+                    [Op.like]: `%${nameUpper}%`
                 }
             }
         }
-        // ,
-        // include: {
-        //     model: Activity,
-        //     attributes: ['name'],
-        //     through: {
-        //         attributes: [],
-        //     }
-        // }
     })
     console.log(specificInfo);
     return specificInfo;
@@ -78,7 +64,6 @@ const getAllDbInfo = async () => {
             }
         }
     })
-    //console.log(dbInfo);
     return dbInfo;
 };
 
