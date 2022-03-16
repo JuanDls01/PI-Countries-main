@@ -7,7 +7,7 @@ router.get('/', async (req, res, next) => {
     try {
         const {name} = req.query;
         let allCountries = await getAllDbInfo();
-        console.log(allCountries);
+        //console.log(allCountries);
         if (allCountries.length) {
             if (name) {
                 let specificCountries = await getSpecificCountries(name)
