@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import arrow from '../../icons/Arrow.png';
-import flags from '../../img/flags.png';
+import flags from '../../img/flags2.png';
 
 const LandingPage = () => {
     return (
@@ -15,8 +15,10 @@ const LandingPage = () => {
                 a uno o más países
                 </p>
                 <Link to='/Home'>
-                    <button>Comencemos</button>
-                    <img src={arrow} alt='arrow-img'/>
+                    <button>
+                        Comencemos
+                        <img src={arrow} alt='arrow-img'/>
+                    </button>
                 </Link>
             </div>
             <div>
