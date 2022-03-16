@@ -2,13 +2,16 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage';
 import NavBar from './components/NavBar/NavBar';
+import Home from './components/Home/Home';
+
 
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <LandingPage />
+      <Route exact path= '/' render={() => <LandingPage />} />
+      <Route path='/countries' render={() => <Home />} />
     </div>
   );
 }

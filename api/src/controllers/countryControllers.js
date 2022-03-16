@@ -35,7 +35,7 @@ const getApiInfo = async () => {
 };
 
 const postApiInfoToCountryDb = async () => {
-    const apiInfo = await getApiInfo();
+    const apiInfo = await getApiInfo(); //[]
     await apiInfo.forEach(async el => await Country.create(el));
 };
 
@@ -49,7 +49,7 @@ const getSpecificCountry = async (idPais) => {
             attributes: ['name', 'difficulty', 'duration', 'season' ]
         },
     });
-    return specificCountry;0
+    return specificCountry;
 }
 
 const getSpecificCountries = async (name) => {
@@ -57,7 +57,7 @@ const getSpecificCountries = async (name) => {
     const specificInfo = await Country.findAll({
         where: {
             name: {
-                [Op.or]: {
+                [Op.or]: { //Está alpedo pero bue
                     [Op.like]: `%${nameUpper}%`
                 }
             }
