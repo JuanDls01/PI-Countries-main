@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <NavBar />
       <Route exact path= '/' render={() => <LandingPage />} />
-      <Route path='/countries' render={() => <Home />} />
+      <Route path='/home' render={() => <Home />} />
     </div>
   );
 }

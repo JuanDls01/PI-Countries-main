@@ -14,7 +14,7 @@ const LandingPage = () => {
                 Al mismo tiempo si conoces alguna actividad que te encanto, podras asociarsela 
                 a uno o más países
                 </p>
-                <Link to='/countries'>
+                <Link to='/home'>
                     <button>
                         Comencemos
                         <img src={arrow} alt='arrow-img'/>

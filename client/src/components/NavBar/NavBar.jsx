@@ -9,8 +9,8 @@ const NavBar = () => {
                 <h3>Country-App</h3>
             </div>
             <div>
-                <Link to='/countries'>Home</Link>
-                <Link to='/countries/create-activity'>Create Activity</Link>
+                <Link to='/home'>Home</Link>
+                <Link to='/home/create-activity'>Create Activity</Link>
                 <SearchBar />
             </div>          
         </div>

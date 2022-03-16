@@ -16,7 +16,7 @@ const Home = () => {
     //useEffect funcionando como componentDidMount() y despachando como mapDispatchToProps. Una vez montado traigo toda la info:
     useEffect(()=>{
         dispatch(getAllCountries());
-    },[]);
+    });
 
     return (
         <div>
