@@ -11,9 +11,9 @@ const Paginado = ({countriesPerPage, allCountries, paginado}) => {
     //En el onClick le digo que setee las página actual.
     return(
         <nav>
-            <ul className='paginado'>
+            <ul>
                 {pageNumber && pageNumber.map(number => 
-                    <li className='number' key={number}>
+                    <li key={number}>
                         <a onClick={()=>paginado(number)}>{number}</a>
                     </li>
                 )}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { getAllCountries } from '../../redux/actions';
+import { getAllCountries, filterCountriesByContinent } from '../../redux/actions';
 import Filter from '../Filter/Filter';
 import CountryCard from '../CountryCard/CountryCard';
 import Paginado from '../Paginado/Paginado';
@@ -23,19 +23,25 @@ const Home = () => {
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber);
     }
-    
+
     //Función para despachar:
     const dispatch = useDispatch();
 
     //useEffect funcionando como componentDidMount() y despachando como mapDispatchToProps. Una vez montado traigo toda la info:
     useEffect(()=>{
         dispatch(getAllCountries());
-    });
+    }, [dispatch]);
+
+    //Creo el handle del filter aca para no importar todo devuelta en filter:
+    const handleFilterContinent = (e) => {
+        e.preventDefault();
+        dispatch(filterCountriesByContinent(e.target.value))
+    }
 
     return (
         <div>
             <div>
-                <Filter />
+                <Filter handleFilterContinent={handleFilterContinent}/>
             </div>
             <div>
                 <Paginado countriesPerPage={countriesPerPage} paginado={paginado} allCountries={allCountries.length} />
