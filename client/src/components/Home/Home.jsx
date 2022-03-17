@@ -7,27 +7,22 @@ import CountryCard from '../CountryCard/CountryCard';
 import Paginado from '../Paginado/Paginado';
 
 const Home = () => {
-
+    
     //useState funcionando como mapStateToProps:
     const allCountries = useSelector((state) => state.countries); //Traigo el estado countries
 
     //useState para estados locales:
     const [currentPage, setCurrentPage] = useState(1);
-    const [countriesPerPage, setCountriesPerPage] = useState(10);
-    let indexOfLastCountry = currentPage * countriesPerPage;
-    if(currentPage === 1){
-        indexOfLastCountry = indexOfLastCountry - 1;
-    }
+
+    let countriesPerPage;
+    currentPage === 1? countriesPerPage = 9: countriesPerPage = 10;
+    const indexOfLastCountry = currentPage * countriesPerPage;
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)
 
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber);
     }
-
-    // if(currentPage > 1) {
-    //     setCountriesPerPage(10);
-    // }
     
     //Función para despachar:
     const dispatch = useDispatch();
