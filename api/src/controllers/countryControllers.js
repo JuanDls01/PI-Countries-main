@@ -2,40 +2,21 @@ const axios = require('axios');
 const { Country, Activity } = require('../db.js');
 const { DataTypes, Op } = require('sequelize');
 
-const getApiInfo = async () => {
-    //Me traigo toda la info de la api:
-    const apiUrl = await axios.get('https://restcountries.com/v3/all');
-    const apiInfo = await apiUrl.data.map(el => {
-        if(el.capital){
-            return {
-                id: el.cca3,
-                name: el.translations.spa.common,
-                imgFlag: el.flags[0],
-                continent: el.continents[0],
-                capital: el.capital[0],
-                subregion: el.subregion,
-                area: el.area,
-                population: el.population,
-            }
-        } else {
-            return {
-                id: el.cca3,
-                name: el.translations.spa.common,
-                imgFlag: el.flags[0],
-                continent: el.continents[0],
-                capital: 'no cap',
-                subregion: el.subregion,
-                area: el.area,
-                population: el.population,
-            }
-        }
-        
-    });
-    return apiInfo;
-};
 
 const postApiInfoToCountryDb = async () => {
-    const apiInfo = await getApiInfo(); //[]
+    const apiUrl = await axios.get('https://restcountries.com/v3/all');
+    const apiInfo = await apiUrl.data.map(el => {
+        return {
+            id: el.cca3,
+            name: el.translations.spa.common,
+            imgFlag: el.flags[0],
+            continent: el.continents[0],
+            capital: el.capital? el.capital[0] : 'no cap',
+            subregion: el.subregion,
+            area: el.area,
+            population: el.population,
+        }
+    });
     await apiInfo.forEach(async el => await Country.create(el));
 };
 
@@ -77,6 +58,7 @@ const getAllDbInfo = async () => {
             }
         }
     })
+    //console.log(dbInfo);
     return dbInfo;
 };
 
