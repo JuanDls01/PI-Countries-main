@@ -1,0 +1,48 @@
+.navbar {
+    height: 101px;
+    background-color: #373637;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* @font-face {
+	font-family: "spartan-regular";
+	src: url('../../fonts/Spartan/static/Spartan-Regular.ttf');
+    src: url('../../fonts/Spartan/static/Spartan-SemiBold.ttf');
+} */
+
+h3 {
+    font-family: 'Spartan', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.text {
+    color: #F5F5F5;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#logo {
+    height: 66px;
+    width: 264px;
+    margin-left: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.nav {
+    height: 100px;
+    width: 700px;
+    margin-right: 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
