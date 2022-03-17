@@ -7,11 +7,6 @@ let callApi = false;
 router.get('/', async (req, res, next) => {
     try {
         const {name} = req.query;
-        // console.log(callApi);
-        // if (!callApi) {
-        //     await postApiInfoToCountryDb();
-        //     callApi = true;
-        // }
         if (name) {
             let specificCountries = await getSpecificCountries(name)
             specificCountries ?
@@ -30,7 +25,6 @@ router.get('/', async (req, res, next) => {
 router.get('/:idPais', async (req,res,next) =>{
     try {
         const {idPais} = req.params;
-        //let allCountries = await getAllDbInfo();
         let specificCountry = await getSpecificCountry(idPais)
         specificCountry ?
         res.status(200).json(specificCountry) :

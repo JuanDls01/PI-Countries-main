@@ -12,13 +12,3 @@ export const getAllCountries = () => async (dispatch) => {
         }
     );
 }
-
-// export const postApiInfotoDb = () => async (dispatch) => {
-//     let json = await axios.get('http://localhost:3001/');
-//     return dispatch(
-//         {
-//             type: POST_TO_DB,
-//             payload: json.data
-//         }
-//     );
-// };
