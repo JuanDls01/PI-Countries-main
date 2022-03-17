@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const { postApiInfoToCountryDb } = require('../controllers/countryControllers');
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -12,6 +13,13 @@ const router = Router();
 
 router.use('/countries', countriesRouter);
 router.use('/activity', activitiesRouter);
+router.post('/', async (req, res, next) =>{
+    try{
+        await postApiInfoToCountryDb();
+    } catch (error){
+        next(error);
+    }
+});
 
 
 module.exports = router;

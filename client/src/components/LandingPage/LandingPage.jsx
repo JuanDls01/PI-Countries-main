@@ -1,9 +1,14 @@
+import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import arrow from '../../icons/Arrow.png';
 import flags from '../../img/flags2.png';
+import {useState, useEffect} from 'react';
 
 const LandingPage = () => {
+    useEffect(()=>{
+        axios.post('http://localhost:3001/')
+    });
     return (
         <div>
             <div>

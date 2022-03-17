@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { postApiInfoToCountryDb, getSpecificCountries, getAllDbInfo, getSpecificCountry } = require('../controllers/countryControllers');
+const { getSpecificCountries, getAllDbInfo, getSpecificCountry } = require('../controllers/countryControllers');
 
 const router = Router();
 let callApi = false;
@@ -7,17 +7,18 @@ let callApi = false;
 router.get('/', async (req, res, next) => {
     try {
         const {name} = req.query;
-        if (!callApi) {
-            await postApiInfoToCountryDb();
-            callApi = true;
-        }
-        const allCountries = await getAllDbInfo();
+        // console.log(callApi);
+        // if (!callApi) {
+        //     await postApiInfoToCountryDb();
+        //     callApi = true;
+        // }
         if (name) {
             let specificCountries = await getSpecificCountries(name)
             specificCountries ?
             res.status(200).json(specificCountries) :
             res.status(404).send('No está el país, sorry');
         } else {
+            let allCountries = await getAllDbInfo();
             res.status(200).json(allCountries)
         }
     }

@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES } from "../actions";
+import { GET_ALL_COUNTRIES} from "../actions";
 
 const initialState = {
     countries: [],
@@ -16,5 +16,6 @@ const rootReducer = (state = initialState, action) => {
     }
 
 };
+
 
 export default rootReducer;
