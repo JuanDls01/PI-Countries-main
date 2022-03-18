@@ -12,8 +12,9 @@ function App() {
       <div id='NavBar'>
         <NavBar />
       </div>
-      <Route exact path= '/' render={() => <LandingPage />} />
-      <Route path='/home' render={() => <Home />} />
+        <Route exact path= '/' render={() => <LandingPage />} />
+        <Route path='/home' render={() => <Home />} />
+      
     </div>
   );
 }

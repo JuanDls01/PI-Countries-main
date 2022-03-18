@@ -6,6 +6,8 @@ import Filter from '../Filter/Filter';
 import CountryCard from '../CountryCard/CountryCard';
 import Paginado from '../Paginado/Paginado';
 
+import './Home.css';
+
 const Home = () => {
     
     //useState funcionando como mapStateToProps:
@@ -39,25 +41,30 @@ const Home = () => {
     }
 
     return (
-        <div>
-            <div>
-                <Filter handleFilterContinent={handleFilterContinent}/>
+        <div className='container'>
+            <div id='pageBox'>
+                <div id='filterBox'>
+                    <Filter handleFilterContinent={handleFilterContinent}/>
+                </div>
+                <div id='indexBox'>
+                    <Paginado countriesPerPage={countriesPerPage} paginado={paginado} allCountries={allCountries.length} />
+                </div>
             </div>
-            <div>
-                <Paginado countriesPerPage={countriesPerPage} paginado={paginado} allCountries={allCountries.length} />
+            <div id='contentBox'>
+                <div id='cardBox'>
+                    {
+                        currentCountries && currentCountries.map((country) => {
+                            return <CountryCard 
+                                key={country.id} 
+                                name={country.name}
+                                imgFlag={country.imgFlag}
+                                continent={country.continent}
+                                />
+                        })
+                    }
+                </div>
             </div>
-            <div>
-                {
-                    currentCountries && currentCountries.map((country) => {
-                        return <CountryCard 
-                            key={country.id} 
-                            name={country.name}
-                            imgFlag={country.imgFlag}
-                            continent={country.continent}
-                            />
-                    })
-                }
-            </div>
+            
         </div>
     )
 
