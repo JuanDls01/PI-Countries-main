@@ -5,6 +5,7 @@ export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT';
 // export const FILTER_BY_ACTIVITIES = 'FILTER_BY_ACTIVITIES';
 // export const SET_ACTIVITIES = 'SET_ACTIVITIES';
 export const SORT_BY_POPULATION = 'SORT_BY_POPULATION';
+export const SORT_BY_NAME = 'SORT_BY_NAME';
 
 export const getAllCountries = () => async (dispatch) => {
     let json = await axios.get('http://localhost:3001/countries');
@@ -27,6 +28,13 @@ export const filterCountriesByContinent = (payload) => {
 export const sortByPopulation = (payload) => {
     return {
         type: SORT_BY_POPULATION,
+        payload
+    }
+}
+
+export const sortByName = (payload) => {
+    return {
+        type: SORT_BY_NAME,
         payload
     }
 }

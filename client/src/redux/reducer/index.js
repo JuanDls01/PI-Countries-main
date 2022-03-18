@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, FILTER_BY_CONTINENT, FILTER_BY_ACTIVITIES, SET_ACTIVITIES, SORT_BY_POPULATION} from "../actions";
+import { GET_ALL_COUNTRIES, FILTER_BY_CONTINENT, FILTER_BY_ACTIVITIES, SET_ACTIVITIES, SORT_BY_POPULATION, SORT_BY_NAME} from "../actions";
 
 const initialState = {
     countries: [],
@@ -44,6 +44,31 @@ const rootReducer = (state = initialState, action) => {
                     }
                     return 0 //si son iguales los deja como esta.
                 })
+            return {
+                ...state,
+                countries: sortedCountries
+            }
+        }
+        case SORT_BY_NAME: {
+            let sortedCountries = action.payload === 'a-z' ?
+            state.countries.sort((a,b) => {
+                if(a.name > b.name) { //si a es mayor, lo pone dsps de b
+                    return 1;
+                }
+                if (b.name > a.name) { //si a es menor, lo pone antes de b
+                    return -1;
+                }
+                return 0 //si son iguales los deja como esta.
+            }):
+            state.countries.sort((a,b) => {
+                if(a.name > b.name) { //si a es mayor, lo pone dsps de b
+                    return -1;
+                }
+                if (b.name > a.name) { //si a es menor, lo pone antes de b
+                    return 1;
+                }
+                return 0 //si son iguales los deja como esta.
+            })
             return {
                 ...state,
                 countries: sortedCountries
