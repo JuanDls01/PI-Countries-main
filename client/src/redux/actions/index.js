@@ -3,7 +3,7 @@ import axios from 'axios';
 export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES';
 export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT';
 // export const FILTER_BY_ACTIVITIES = 'FILTER_BY_ACTIVITIES';
-// export const SET_ACTIVITIES = 'SET_ACTIVITIES';
+export const POST_ACTIVITY = 'POST_ACTIVITY';
 export const SORT_BY_POPULATION = 'SORT_BY_POPULATION';
 export const SORT_BY_NAME = 'SORT_BY_NAME';
 export const GET_NAME_CHARACTERS = 'GET_NAME_CHARACTERS'
@@ -29,6 +29,15 @@ export const getNameCountries = (name) => async (dispatch) => {
         console.log('No se encontro el país buscado')
     }
     
+}
+
+export const postActivities = (payload) => async (dispatch) => {
+    let json = await axios.post('http://localhost:3001/activity', payload)
+    return {
+        type: POST_ACTIVITY,
+        payload: payload.name,
+    }
+
 }
 
 export const filterCountriesByContinent = (payload) => {

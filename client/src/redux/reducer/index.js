@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, FILTER_BY_CONTINENT, GET_NAME_CHARACTERS, SORT_BY_POPULATION, SORT_BY_NAME} from "../actions";
+import { GET_ALL_COUNTRIES, FILTER_BY_CONTINENT, GET_NAME_CHARACTERS, SORT_BY_POPULATION, SORT_BY_NAME, POST_ACTIVITY} from "../actions";
 
 const initialState = {
     countries: [],
@@ -28,6 +28,12 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 countries: countriesFiltered,
+            }
+        }
+        case POST_ACTIVITY: {
+            return {
+                ...state,
+                activities: state.activities.concat(action.payload)
             }
         }
         case SORT_BY_POPULATION: {
