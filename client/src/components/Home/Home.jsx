@@ -40,6 +40,12 @@ const Home = () => {
         dispatch(filterCountriesByContinent(e.target.value))
     }
 
+    //Creao un handler para el boton refresh, que recargue todos los países:
+    const handleRefresh = (e) => {
+        e.preventDefault();
+        dispatch(getAllCountries())
+    }
+
     return (
         <div className='container'>
             <div id='pageBox'>
@@ -49,6 +55,7 @@ const Home = () => {
                 <div id='indexBox'>
                     <Paginado countriesPerPage={countriesPerPage} paginado={paginado} allCountries={allCountries.length} />
                 </div>
+                <button onClick={e=> handleRefresh(e)}>Refresh</button>
             </div>
             <div id='contentBox'>
                 <div id='cardBox'>
