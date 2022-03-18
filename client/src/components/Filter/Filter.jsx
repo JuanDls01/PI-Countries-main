@@ -1,6 +1,15 @@
 import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
-const Filter = ({handleFilterContinent}) => {
+const Filter = ({handleFilterContinent, allCountries, getAllCountries}) => {
+    //Función para despachar:
+    const dispatch = useDispatch();
+
+    //Creao un handler para el boton refresh, que recargue todos los países:
+    const handleRefresh = (e) => {
+        e.preventDefault();
+        dispatch(getAllCountries())
+    }
     return (
         <div>
             <div>
@@ -26,10 +35,13 @@ const Filter = ({handleFilterContinent}) => {
                 </select>
                 <select>
                     <option value='All'>Todos</option>
+                    {/* {
+                        allCountries && allCountries.map()
+                    } */}
                     <option value='Rafting'>Rafting</option>
                 </select>
             </div>
-            <div>Paginado</div>
+            <button onClick={e=> handleRefresh(e)}>Refresh</button>
             
         </div>
     )

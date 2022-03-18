@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { getAllCountries, filterCountriesByContinent } from '../../redux/actions';
+import { getAllCountries, filterCountriesByContinent, setActivities } from '../../redux/actions';
 import Filter from '../Filter/Filter';
 import CountryCard from '../CountryCard/CountryCard';
 import Paginado from '../Paginado/Paginado';
@@ -32,6 +32,7 @@ const Home = () => {
     //useEffect funcionando como componentDidMount() y despachando como mapDispatchToProps. Una vez montado traigo toda la info:
     useEffect(()=>{
         dispatch(getAllCountries());
+        dispatch(setActivities())
     }, [dispatch]);
 
     //Creo el handle del filter aca para no importar todo devuelta en filter:
@@ -40,22 +41,21 @@ const Home = () => {
         dispatch(filterCountriesByContinent(e.target.value))
     }
 
-    //Creao un handler para el boton refresh, que recargue todos los países:
-    const handleRefresh = (e) => {
-        e.preventDefault();
-        dispatch(getAllCountries())
-    }
+    
 
     return (
         <div className='container'>
             <div id='pageBox'>
                 <div id='filterBox'>
-                    <Filter handleFilterContinent={handleFilterContinent}/>
+                    <Filter 
+                        handleFilterContinent={handleFilterContinent} 
+                        allCountries={allCountries}
+                        getAllCountries={getAllCountries} />
                 </div>
                 <div id='indexBox'>
                     <Paginado countriesPerPage={countriesPerPage} paginado={paginado} allCountries={allCountries.length} />
                 </div>
-                <button onClick={e=> handleRefresh(e)}>Refresh</button>
+                
             </div>
             <div id='contentBox'>
                 <div id='cardBox'>
