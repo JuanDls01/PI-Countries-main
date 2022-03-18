@@ -6,6 +6,7 @@ export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT';
 // export const SET_ACTIVITIES = 'SET_ACTIVITIES';
 export const SORT_BY_POPULATION = 'SORT_BY_POPULATION';
 export const SORT_BY_NAME = 'SORT_BY_NAME';
+export const GET_NAME_CHARACTERS = 'GET_NAME_CHARACTERS'
 
 export const getAllCountries = () => async (dispatch) => {
     let json = await axios.get('http://localhost:3001/countries');
@@ -15,6 +16,19 @@ export const getAllCountries = () => async (dispatch) => {
             payload: json.data
         }
     );
+}
+
+export const getNameCountries = (name) => async (dispatch) => {
+    try {
+        let json = await axios.get(`http://localhost:3001/countries?name=${name}`)
+        return dispatch({
+            type: GET_NAME_CHARACTERS,
+            payload: json.data
+        })
+    } catch (error) {
+        console.log('No se encontro el país buscado')
+    }
+    
 }
 
 export const filterCountriesByContinent = (payload) => {

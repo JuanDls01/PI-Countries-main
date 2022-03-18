@@ -11,7 +11,7 @@ const NavBar = () => {
             </div>
             <div className='nav'>
                 <Link to='/home' className='text'>Home</Link>
-                <Link to='/home/create-activity' className='text'>Create Activity</Link>
+                <Link to='/create-activity' className='text'>Create Activity</Link>
                 <SearchBar />
             </div>          
         </div>

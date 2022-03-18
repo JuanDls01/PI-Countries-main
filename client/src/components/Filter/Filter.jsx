@@ -38,7 +38,8 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden}) => {
             <div>
                 <p>Sort by:</p>
                 <span>Población</span>
-                <select onChange={e => handleSortByPopulation(e)}>
+                <select required onChange={e => handleSortByPopulation(e)}>
+                    <option hidden value='Select'>Población</option>
                     <option value='asc'>Ascendente</option>
                     <option value='desc'>Descendente</option>
                 </select>

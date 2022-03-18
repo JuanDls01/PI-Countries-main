@@ -21,7 +21,7 @@ const LandingPage = () => {
                 a uno o más países
                 </p>
                 <Link to='/home'>
-                    <button>
+                    <button className='startButtom'>
                         Comencemos
                         <img src={arrow} alt='arrow-img'/>
                     </button>
