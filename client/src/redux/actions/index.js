@@ -2,8 +2,9 @@ import axios from 'axios';
 
 export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES';
 export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT';
-export const FILTER_BY_ACTIVITIES = 'FILTER_BY_ACTIVITIES';
-export const SET_ACTIVITIES = 'SET_ACTIVITIES';
+// export const FILTER_BY_ACTIVITIES = 'FILTER_BY_ACTIVITIES';
+// export const SET_ACTIVITIES = 'SET_ACTIVITIES';
+export const SORT_BY_POPULATION = 'SORT_BY_POPULATION';
 
 export const getAllCountries = () => async (dispatch) => {
     let json = await axios.get('http://localhost:3001/countries');
@@ -23,16 +24,24 @@ export const filterCountriesByContinent = (payload) => {
     }
 }
 
-export const setActivities = () => {
+export const sortByPopulation = (payload) => {
     return {
-        type: SET_ACTIVITIES,
-        
-    }
-}
-
-export const filterCountriesByActivity = (payload) => {
-    return {
-        type: FILTER_BY_ACTIVITIES,
+        type: SORT_BY_POPULATION,
         payload
     }
 }
+
+// export const setActivities = () => {
+//     console.log('La acción llega')
+//     return {
+//         type: SET_ACTIVITIES,
+
+//     }
+// }
+
+// export const filterCountriesByActivity = (payload) => {
+//     return {
+//         type: FILTER_BY_ACTIVITIES,
+//         payload
+//     }
+// }

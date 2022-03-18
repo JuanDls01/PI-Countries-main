@@ -1,11 +1,24 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {filterCountriesByContinent, sortByPopulation} from '../../redux/actions';
 
-const Filter = ({handleFilterContinent, allCountries, getAllCountries}) => {
+const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden}) => {
     //Función para despachar:
     const dispatch = useDispatch();
 
-    //Creao un handler para el boton refresh, que recargue todos los países:
+    //Creo el handle del filter aca para no importar todo devuelta en filter:
+    const handleFilterContinent = (e) => {
+        e.preventDefault();
+        dispatch(filterCountriesByContinent(e.target.value))
+    }
+
+    const handleSortByPopulation = (e) => {
+        e.preventDefault();
+        dispatch(sortByPopulation(e.target.value))
+        setCurrentPage(1)
+        setOrden(`Ordenado ${e.target.value}`)
+    }
+    //Creo un handler para el boton refresh, que recargue todos los países:
     const handleRefresh = (e) => {
         e.preventDefault();
         dispatch(getAllCountries())
@@ -14,10 +27,12 @@ const Filter = ({handleFilterContinent, allCountries, getAllCountries}) => {
         <div>
             <div>
                 <p>Sort by:</p>
-                <select>
+                <span>Población</span>
+                <select onChange={e => handleSortByPopulation(e)}>
                     <option value='asc'>Ascendente</option>
                     <option value='desc'>Descendente</option>
                 </select>
+                <span>Alfabeticamente</span>
                 <select>
                     <option value='a-z'>a-z</option>
                     <option value='z-a'>z-a</option>

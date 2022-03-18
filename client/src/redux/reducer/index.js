@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, FILTER_BY_CONTINENT, FILTER_BY_ACTIVITIES, SET_ACTIVITIES} from "../actions";
+import { GET_ALL_COUNTRIES, FILTER_BY_CONTINENT, FILTER_BY_ACTIVITIES, SET_ACTIVITIES, SORT_BY_POPULATION} from "../actions";
 
 const initialState = {
     countries: [],
@@ -24,25 +24,51 @@ const rootReducer = (state = initialState, action) => {
                 countries: countriesFiltered,
             }
         }
-        case FILTER_BY_ACTIVITIES: {
-            const allCountries = state.allCountries;
-            const countries = action.payload === 'All'? allCountries : allCountries.filter(country => {
-                country.activities.forEach(activity => {
-                    if (activity === action.payload) return true;
-            })})
-        }
-        case SET_ACTIVITIES: {
-            let allActivities=[];
-            state.allCountries.map(({activities}) => activities.map(activity => allActivities.push(activity)));
-            const actNotDuplicated = allActivities.filter((ele, pos) => {
-                return allActivities.indexOf(ele) === pos;
-            })
-            // allActivities
+        case SORT_BY_POPULATION: {
+            let sortedCountries = action.payload === 'asc' ?
+                state.countries.sort((a,b) => {
+                    if(a.population > b.population) { //si a es mayor, lo pone dsps de b
+                        return 1;
+                    }
+                    if (b.population > a.population) { //si a es menor, lo pone antes de b
+                        return -1;
+                    }
+                    return 0 //si son iguales los deja como esta.
+                }):
+                state.countries.sort((a,b) => {
+                    if(a.population > b.population) { //si a es mayor, lo pone dsps de b
+                        return -1;
+                    }
+                    if (b.population > a.population) { //si a es menor, lo pone antes de b
+                        return 1;
+                    }
+                    return 0 //si son iguales los deja como esta.
+                })
             return {
                 ...state,
-                activities: actNotDuplicated,
+                countries: sortedCountries
             }
         }
+        // case FILTER_BY_ACTIVITIES: {
+        //     const allCountries = state.allCountries;
+        //     const countries = action.payload === 'All'? allCountries : allCountries.filter(country => {
+        //         country.activities.forEach(activity => {
+        //             if (activity === action.payload) return true;
+        //     })})
+        // }
+        // case SET_ACTIVITIES: {
+        //     console.log(state.allCountries);
+        //     let allActivities=state.allCountries.map(countries => countries.activities.map(activity => activity));
+            
+        //     // const actNotDuplicated = allActivities.filter((ele, pos) => {
+        //     //     return allActivities.indexOf(ele) === pos;
+        //     // })
+        //     console.log(allActivities);
+        //     return {
+        //         ...state,
+        //         activities: allActivities,
+        //     }
+        // }
         default: {return state}
     }
 
