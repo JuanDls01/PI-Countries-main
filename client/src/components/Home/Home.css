@@ -1,20 +1,22 @@
-#container {
+.Home {
+    padding-top: 101px;
+}
+.containerHome {
+    /* padding-top: 110px; */
     height: 1023px;
     display: flex;
 }
 
-#pageBox {
+.pageBox {
     height: 930px;
-    margin-top: 110px;
+    margin: 3px;
+    /* margin-top: 110px; */
+    border-left-width: 10px;
+    border: #ACACAC;
+    border-color: #ACACAC;
 }
 
-#filterBox {
-    height: 540px;
-    width: 310px;
-    display: flex;
-    justify-content: center;
-    align-items: space-around;
-}
+
 
 #indexBox {
     height: 100px;
@@ -23,9 +25,9 @@
 }
 
 #contentBox {
-    width: 900px;
+    width: 100%;
     height: 930px;
-    margin-top: 110px;
+    /* margin-top: 110px; */
     display: flex;
     
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {filterCountriesByContinent, sortByName, sortByPopulation} from '../../redux/actions';
+import './Filter.css';
 
 const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden}) => {
     //Función para despachar:
@@ -34,22 +35,20 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden}) => {
         dispatch(getAllCountries())
     }
     return (
-        <div>
-            <div>
+            <div className='filterBox'>
                 <p>Sort by:</p>
-                <span>Población</span>
                 <select required onChange={e => handleSortByPopulation(e)}>
-                    <option hidden value='Select'>Población</option>
+                    <option hidden value='Select'>Number of inhabitants</option>
                     <option value='asc'>Ascendente</option>
                     <option value='desc'>Descendente</option>
                 </select>
-                <span>Alfabeticamente</span>
                 <select onChange={e => handleSortByName(e)}>
                     <option value='a-z'>a-z</option>
                     <option value='z-a'>z-a</option>
                 </select>
                 <p>Filter by:</p>
                 <select onChange={e => handleFilterContinent(e)}>
+                    <option hidden value='Select'>Continent</option>
                     <option value='All'>Todos</option>
                     <option value='North America'>Norte América</option>
                     <option value='South America'>América del Sur</option>
@@ -60,16 +59,15 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden}) => {
                     <option value='Antarctica'>Antartida</option>
                 </select>
                 <select>
+                    <option hidden value='Select'>Activity</option>
                     <option value='All'>Todos</option>
                     {/* {
                         allCountries && allCountries.map()
                     } */}
                     <option value='Rafting'>Rafting</option>
                 </select>
+                <button onClick={e=> handleRefresh(e)}>Refresh</button>
             </div>
-            <button onClick={e=> handleRefresh(e)}>Refresh</button>
-            
-        </div>
     )
 }
 

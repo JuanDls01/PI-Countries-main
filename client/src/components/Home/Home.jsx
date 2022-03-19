@@ -40,35 +40,35 @@ const Home = () => {
 
 
     return (
-        <div className='container'>
-            <div id='pageBox'>
-                <div id='filterBox'>
-                    <Filter 
-                        allCountries={allCountries}
-                        getAllCountries={getAllCountries}
-                        setOrden={setOrden}
-                        setCurrentPage={setCurrentPage} />
+        <div className='Home'>
+            <div className='containerHome'>
+                <div className='pageBox'>
+                    <div>
+                        <Filter 
+                            allCountries={allCountries}
+                            getAllCountries={getAllCountries}
+                            setOrden={setOrden}
+                            setCurrentPage={setCurrentPage} />
+                    </div>
+                    <div id='indexBox'>
+                        <Paginado countriesPerPage={countriesPerPage} paginado={paginado} allCountries={allCountries.length} />
+                    </div>
+                    
                 </div>
-                <div id='indexBox'>
-                    <Paginado countriesPerPage={countriesPerPage} paginado={paginado} allCountries={allCountries.length} />
+                <div id='contentBox'>
+                        {
+                            currentCountries && currentCountries.map((country) => {
+                                return <CountryCard 
+                                    key={country.id} 
+                                    name={country.name}
+                                    imgFlag={country.imgFlag}
+                                    continent={country.continent}
+                                    />
+                            })
+                        }
                 </div>
                 
             </div>
-            <div id='contentBox'>
-                <div id='cardBox'>
-                    {
-                        currentCountries && currentCountries.map((country) => {
-                            return <CountryCard 
-                                key={country.id} 
-                                name={country.name}
-                                imgFlag={country.imgFlag}
-                                continent={country.continent}
-                                />
-                        })
-                    }
-                </div>
-            </div>
-            
         </div>
     )
 

@@ -34,8 +34,9 @@ const getSpecificCountry = async (idPais) => {
 }
 
 const getSpecificCountries = async (name) => {
-    //Como lo que busco puede estar con espacios tmb hago que todas las palabras inicien con mayúscula:
-    const nameArr = name.split(' ');
+    //Trabajo los nombres para que si o si coincidan con los de mi db:
+    const nameLower = name.toLowerCase();
+    const nameArr = nameLower.split(' ');
     const nameArrUpper = nameArr.map(word => word.charAt(0).toUpperCase() + word.slice(1));
     const nameUpper = nameArrUpper.join(' ');
     const specificInfo = await Country.findAll({

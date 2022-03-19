@@ -31,55 +31,62 @@ const CreateActivity = () => {
 
 
     return (
-        <div>
-            <form onSubmit={(e) => handleSubmitChange(e)} className='container'>
-                <div>
-                    <label>Name: </label>
-                    <input 
-                        type='text'
-                        name='name'
-                        onChange={(e) => handleInputChange(e)}
-                        value={activity.name}
-                    />
-                </div>
-                <div>
-                    <label>Description: </label>
-                    <input 
-                        type='text'
-                        name='description'
-                        onChange={(e) => handleInputChange(e)}
-                        value={activity.description}
-                    />
-                </div>
-                <div>
-                    <label>Dificultad: </label>
-                    <input 
-                        type='number'
-                        name='difficulty'
-                        onChange={(e) => handleInputChange(e)}
-                        value={activity.difficulty}
-                    />
-                </div>
-                <div>
-                    <label>Duración: </label>
-                    <input 
-                        type='number'
-                        name='duration'
-                        onChange={(e) => handleInputChange(e)}
-                        value={activity.duration}
-                    />
-                </div>
-                <div>
-                    <label>Temporada ideal para realizarla: </label>
-                    <input 
-                        type='text'
-                        name='season'
-                        onChange={(e) => handleInputChange(e)}
-                        value={activity.season}
-                    />
-                </div>
-                <button type='submit'>Create</button>
-            </form>
+        <div className='container'>
+            <div className='formBox'>
+                <form className='formComponent' onSubmit={(e) => handleSubmitChange(e)}>
+                    <div className='inputSpecific1'>
+                        <label>Name: </label>
+                        <input 
+                            
+                            type='text'
+                            name='name'
+                            onChange={(e) => handleInputChange(e)}
+                            value={activity.name}
+                        />
+                    </div>
+                    <div className='inputSpecific2'>
+                        <label>Description: </label>
+                        <input 
+                            
+                            type='text'
+                            name='description'
+                            onChange={(e) => handleInputChange(e)}
+                            value={activity.description}
+                        />
+                    </div>
+                    <div className='inputComponent'>
+                        <label>Dificultad: </label>
+                        <input className='indputGeneric'
+                            type='number'
+                            name='difficulty'
+                            onChange={(e) => handleInputChange(e)}
+                            value={activity.difficulty}
+                        />
+                    </div>
+                    <div className='inputComponent'>
+                        <label>Duración: </label>
+                        <input 
+                            className='indputGeneric'
+                            type='number'
+                            name='duration'
+                            onChange={(e) => handleInputChange(e)}
+                            value={activity.duration}
+                        />
+                    </div>
+                    <div className='inputComponent'>
+                        <label>Temporada ideal para realizarla: </label>
+                        <input 
+                            className='indputGeneric'
+                            type='text'
+                            name='season'
+                            onChange={(e) => handleInputChange(e)}
+                            value={activity.season}
+                        />
+                    </div>
+                    <button type='submit'>Create</button>
+                </form>
+            </div>
+            
         </div>
     )
 }
