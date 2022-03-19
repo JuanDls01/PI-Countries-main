@@ -1,34 +1,49 @@
 .Home {
     padding-top: 101px;
+    /* background: linear-gradient(to bottom right, #ffffff, #a8a8a8); */
+    /* background-image: url('../../img/ny.png');
+    background-size: 100% 100%; */
 }
 .containerHome {
     /* padding-top: 110px; */
-    height: 1023px;
+    height: 930px;
     display: flex;
 }
 
 .pageBox {
-    height: 930px;
-    margin: 3px;
+    height: 100%;
+    margin: 0px;
     /* margin-top: 110px; */
-    border-left-width: 10px;
-    border: #ACACAC;
-    border-color: #ACACAC;
+    border-right: #e0dddd 1px solid;
+    /* border-left-width: 10px;
+    border:  solid;
+    border-color: #ACACAC; */
 }
 
 
 
 #indexBox {
-    height: 100px;
-    width: 310px;
+    margin: 15px 10px;
+    padding: 10px;
+    height: 130px;
+    width: 290px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    border-width: thin;
+    border-style: solid;
+    border-color: #ACACAC;
+    border-radius: 5px;
 }
 
 #contentBox {
     width: 100%;
     height: 930px;
-    /* margin-top: 110px; */
+    margin: 10px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     
 }
 

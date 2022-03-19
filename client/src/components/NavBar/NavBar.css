@@ -1,6 +1,7 @@
 .navbar {
     height: 101px;
-    background-color: #373637;
+    background-color: #262641;
+    /* background: linear-gradient(to bottom right, #0f336083, #262641); */
     top: 0;
     left: 0;
     display: flex;
@@ -14,7 +15,7 @@
     src: url('../../fonts/Spartan/static/Spartan-SemiBold.ttf');
 } */
 
-h3 {
+.navbar h3 {
     font-family: 'Spartan', sans-serif;
     font-size: 30px;
     font-weight: bold;
@@ -22,7 +23,7 @@ h3 {
 
 .text {
     color: #F5F5F5;
-    font-size: 20px;
+    font-size: 25px;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
 }
