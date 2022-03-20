@@ -5,6 +5,7 @@ import { getAllCountries, setActivities } from '../../redux/actions';
 import Filter from '../Filter/Filter';
 import CountryCard from '../CountryCard/CountryCard';
 import Paginado from '../Paginado/Paginado';
+import planet from '../../img/world1.png';
 
 import './Home.css';
 
@@ -41,20 +42,15 @@ const Home = () => {
 
     return (
         <div className='Home'>
+            <div className='containerImg'>
+                {/* <img className='planetImg' src={planet} alt='Cargando Imagen'/> */}
+            </div>
             <div className='containerHome'>
-                <div className='pageBox'>
-                    <div>
-                        <Filter 
-                            allCountries={allCountries}
-                            getAllCountries={getAllCountries}
-                            setOrden={setOrden}
-                            setCurrentPage={setCurrentPage} />
-                    </div>
-                    <div id='indexBox'>
-                        <Paginado countriesPerPage={countriesPerPage} paginado={paginado} allCountries={allCountries.length} />
-                    </div>
-                    
-                </div>
+                    <Filter 
+                        allCountries={allCountries}
+                        getAllCountries={getAllCountries}
+                        setOrden={setOrden}
+                        setCurrentPage={setCurrentPage} />
                 <div id='contentBox'>
                         {
                             currentCountries && currentCountries.map((country) => {
@@ -67,8 +63,12 @@ const Home = () => {
                             })
                         }
                 </div>
+                <div id='indexBox'>
+                    <Paginado countriesPerPage={countriesPerPage} paginado={paginado} allCountries={allCountries.length} />
+                </div>
                 
             </div>
+            
         </div>
     )
 

@@ -1,34 +1,56 @@
 .filterBox {
-    height: 540px;
-    width: 310px;
-    margin: 15px 10px;
-    box-sizing: border-box;
-    border-width: thin;
-    border-style: solid;
-    border-color: #ACACAC;
-    border-radius: 5px;
-    padding: 25px 30px;
+    /* height: 540px;
+    width: 310px; */
+    /* margin: 15px 10px; */
+    /* box-sizing: border-box; */
+    height: 100px;
+    width: 100%;
+    margin: 0px;
+    
+    background-color: #000000;
+    border-bottom: 1px solid rgba(172, 172, 172, 0.35);
+    /* border-radius: 5px; */
+    /* padding: 25px 30px; */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     
 }
 
-.filterBox select {
-    height: 45px;
-    background-color: #F9F9F9;
-    border-color: #EDECEC;
-    font-size: medium;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
+
+.containBox {
+    height: 80px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-around;
 }
 
-.filterBox p {
+.selects {
+    display: flex;
+    justify-content: space-around;
+}
+
+.containBox p {
     font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
+    color: #ffffff;
     /* text-align: left; */
 }
+
+.selects select {
+    width: 130px;
+    height: 40px;
+    color: #ffffff;
+    background-color: #000000;
+    border-color: #edecec1a;
+    border-radius: 3px;
+}
+
+
 
 .filterBox button {
     /* width: 353px; */

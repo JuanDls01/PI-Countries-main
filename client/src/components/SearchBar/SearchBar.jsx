@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import { getNameCountries } from '../../redux/actions';
 import lupa from '../../icons/lupita.png';
+import './SearchBar.css'
 
 const SearchBar = () => {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const SearchBar = () => {
     }
 
     return (
-        <div>
+        <div className='SearchContainer'>
                 <input
                     type="text"
                     placeholder="Search countries here..."

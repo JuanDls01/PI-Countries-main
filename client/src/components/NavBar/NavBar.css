@@ -1,12 +1,12 @@
 .navbar {
-    height: 101px;
-    background-color: #262641;
+    height: 60px;
+    width: 90%;
+    /* background-color: #00000056; */
     /* background: linear-gradient(to bottom right, #0f336083, #262641); */
-    top: 0;
-    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 2px rgba(237, 237, 237, 0.26) solid;
 }
 
 /* @font-face {
@@ -15,10 +15,20 @@
     src: url('../../fonts/Spartan/static/Spartan-SemiBold.ttf');
 } */
 
-.navbar h3 {
+.logo {
+    height: 66px;
+    width: 264px;
+    /* margin-left: 52px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo h3 {
     font-family: 'Spartan', sans-serif;
     font-size: 30px;
     font-weight: bold;
+    color:#F5F5F5;
 }
 
 .text {
@@ -28,22 +38,11 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-#logo {
-    height: 66px;
-    width: 264px;
-    margin-left: 52px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
 .nav {
-    height: 100px;
-    width: 700px;
-    margin-right: 52px;
+    height: 60px;
+    width: 650px;
+    /* margin-right: 52px; */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }

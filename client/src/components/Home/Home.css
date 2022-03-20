@@ -1,26 +1,42 @@
 .Home {
-    padding-top: 101px;
+    padding-top: 90px;
     /* background: linear-gradient(to bottom right, #ffffff, #a8a8a8); */
     /* background-image: url('../../img/ny.png');
     background-size: 100% 100%; */
 }
+
+.containerImg {
+    width: 100%;
+    height: 500px;
+    background-image: url('../../img/world5.png');
+    background-color: black;
+    background-size: 100%;
+}
+
+.planetImg {
+    height: 500px;
+    width: 100%;
+    height: 640px;
+}
+
 .containerHome {
     /* padding-top: 110px; */
-    height: 930px;
+    /* height: 930px; */
     display: flex;
-}
-
-.pageBox {
-    height: 100%;
-    margin: 0px;
-    /* margin-top: 110px; */
-    border-right: #e0dddd 1px solid;
-    /* border-left-width: 10px;
-    border:  solid;
-    border-color: #ACACAC; */
+    flex-direction: column;
 }
 
 
+#contentBox {
+    width: 100%;
+    height: 750px;
+    /* margin: 10px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
 
 #indexBox {
     margin: 15px 10px;
@@ -36,16 +52,7 @@
     border-radius: 5px;
 }
 
-#contentBox {
-    width: 100%;
-    height: 930px;
-    margin: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    
-}
+
 
 #cardBox {
     width: 900px;

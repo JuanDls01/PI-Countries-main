@@ -2,22 +2,24 @@
     width: 200px;
     height: 220px;
     margin: 20px 20px;
-    background-color: #ECECEC;
+    /* background-color: #ECECEC; */
     /* background: linear-gradient(to bottom right, #b6b6b688, #70707054);; */
-    /* border-width: 1px;
+    border-width: 1px;
     border-style: solid;
-    border-color: #e10858b9;
-    border-radius: 15px;; */
+    border-color: #ffffff60;
+    /* border-color: #e10858b9; */
+    border-radius: 5px;;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .Card img {
     background-size: cover;
     width: 200px;
     height: 140px;
+    border-radius: 5px;
     /* padding: 3px; */
     /* border-radius: 10px; */
     object-fit: cover
@@ -26,7 +28,8 @@
 .Card h3 {
     font-family: 'Spartan', sans-serif;
     font-size: 14px;
-    /* border-top: 1px #e4e3e39f solid; */
+    border-top: 1px #ffffff60 solid;
+    color: #ffffff;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -37,12 +40,13 @@
 
 .Card h5 {
     font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0px 10px;
-    height: 20px;
-    width: 190px;
+    border-top: 1px #e4e3e39f solid;
+    padding: 10px 10px;
+    align-items: flex-start;
+    /* height: 20px; */
+    width: 100px;
 }
 
 
