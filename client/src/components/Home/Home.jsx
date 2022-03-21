@@ -11,14 +11,15 @@ import './Home.css';
 
 const Home = () => {
     
-    //Traigo el estado countries
-    const allCountries = useSelector((state) => state.countries);
     const dispatch = useDispatch();
 
     //Una vez montado traigo toda la info:
     useEffect(()=>{
         dispatch(getAllCountries());
     }, [dispatch]);
+
+    //Traigo el estado countries
+    const allCountries = useSelector((state) => state.countries);
 
     //currentPage para que si cambio de página el home se vuelva a renderizar:
     const [currentPage, setCurrentPage] = useState(1);

@@ -8,7 +8,7 @@ router.post('/', async (req,res,next) => {
     try{
         let {name, description, difficulty, duration, season, countries} = req.body;
         activityCreator(name, description, difficulty, duration, season, countries);
-        res.send('Character created succesfully');
+        res.send('Actividad created succesfully');
     } catch (error) {
         next(error);
     }
