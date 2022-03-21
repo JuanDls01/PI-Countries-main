@@ -6,7 +6,7 @@ export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT';
 export const POST_ACTIVITY = 'POST_ACTIVITY';
 export const SORT_BY_POPULATION = 'SORT_BY_POPULATION';
 export const SORT_BY_NAME = 'SORT_BY_NAME';
-export const GET_NAME_CHARACTERS = 'GET_NAME_CHARACTERS'
+export const GET_NAME_COUNTRIES = 'GET_NAME_COUNTRIES'
 
 export const getAllCountries = () => async (dispatch) => {
     let json = await axios.get('http://localhost:3001/countries');
@@ -22,7 +22,7 @@ export const getNameCountries = (name) => async (dispatch) => {
     try {
         let json = await axios.get(`http://localhost:3001/countries?name=${name}`)
         return dispatch({
-            type: GET_NAME_CHARACTERS,
+            type: GET_NAME_COUNTRIES,
             payload: json.data
         })
     } catch (error) {

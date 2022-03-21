@@ -4,7 +4,7 @@ import { getNameCountries } from '../../redux/actions';
 import lupa from '../../icons/lupita.png';
 import './SearchBar.css'
 
-const SearchBar = () => {
+const SearchBar = ({setCurrentPage}) => {
     const dispatch = useDispatch();
 
     //Creo el stado local para ir guardando lo que va escribiendo el usuario:
@@ -19,8 +19,9 @@ const SearchBar = () => {
     //Despacho la acción una vez submiteado:
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(getNameCountries(name))
-        setName('')
+        dispatch(getNameCountries(name));
+        setName('');
+        setCurrentPage(1);
     }
 
     return (

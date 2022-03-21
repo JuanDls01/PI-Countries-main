@@ -11,14 +11,21 @@ import './Home.css';
 
 const Home = () => {
     
-    //useState funcionando como mapStateToProps:
-    const allCountries = useSelector((state) => state.countries); //Traigo el estado countries
+    //Traigo el estado countries
+    const allCountries = useSelector((state) => state.countries);
+    const dispatch = useDispatch();
 
-    //useState para estados locales:
+    //Una vez montado traigo toda la info:
+    useEffect(()=>{
+        dispatch(getAllCountries());
+    }, [dispatch]);
+
+    //currentPage para que si cambio de página el home se vuelva a renderizar:
     const [currentPage, setCurrentPage] = useState(1);
+    //orden para que si cambio el orden o si filtro, el home vuelva a renderizar:
     const [orden, setOrden] = useState('');
 
-
+    //Lógica para que la página sepa cuantas cartas mostrar:
     let countriesPerPage;
     currentPage === 1? countriesPerPage = 9: countriesPerPage = 10;
     const indexOfLastCountry = currentPage * countriesPerPage;
@@ -30,27 +37,17 @@ const Home = () => {
         setCurrentPage(pageNumber);
     }
 
-    //Función para despachar:
-    const dispatch = useDispatch();
-
-    //useEffect funcionando como componentDidMount() y despachando como mapDispatchToProps. Una vez montado traigo toda la info:
-    useEffect(()=>{
-        dispatch(getAllCountries());
-        // dispatch(setActivities())
-    }, [dispatch]);
-
 
     return (
         <div className='Home'>
-            <div className='containerImg'>
-                {/* <img className='planetImg' src={planet} alt='Cargando Imagen'/> */}
-            </div>
+            <div className='containerImg'></div>
             <div className='containerHome'>
                     <Filter 
                         allCountries={allCountries}
                         getAllCountries={getAllCountries}
                         setOrden={setOrden}
-                        setCurrentPage={setCurrentPage} />
+                        setCurrentPage={setCurrentPage}
+                    />
                 <div id='contentBox'>
                         {
                             currentCountries && currentCountries.map((country) => {

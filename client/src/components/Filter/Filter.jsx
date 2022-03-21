@@ -8,7 +8,7 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden}) => {
     //Función para despachar:
     const dispatch = useDispatch();
 
-    //Creo el handle del filter aca para no importar todo devuelta en filter:
+    //Handle para ordenar por continentes:
     const handleFilterContinent = (e) => {
         e.preventDefault();
         dispatch(filterCountriesByContinent(e.target.value))
@@ -30,7 +30,7 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden}) => {
         setOrden(`Ordenado ${e.target.value}`);
     }
 
-    //Creo un handler para el boton refresh, que recargue todos los países:
+    //Handle para refrescar y cargar todos los paises:
     const handleRefresh = (e) => {
         e.preventDefault();
         dispatch(getAllCountries())
@@ -77,7 +77,7 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden}) => {
                     
                 </div>
                 <div className='containBox'>
-                    <SearchBar />
+                    <SearchBar setCurrentPage={setCurrentPage}/>
                     {/* <button onClick={e=> handleRefresh(e)}>Refresh</button> */}
                 </div>
                 
