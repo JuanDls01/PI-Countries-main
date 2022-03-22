@@ -16,6 +16,7 @@ router.use('/activity', activitiesRouter);
 router.post('/', async (req, res, next) =>{
     try{
         await postApiInfoToCountryDb();
+        res.send('Se busco la info de la API')
     } catch (error){
         next(error);
     }

@@ -5,8 +5,8 @@ import {postActivities, getAllCountries} from '../../redux/actions';
 import './CreateActivity.css';
 
 export const validate = (input) => {
-        let errors = {};
         console.log(input)
+        let errors = {};
         if (!input.name){
             errors.name = 'No se olvide de escribir un nombre';
         }
@@ -93,6 +93,7 @@ const CreateActivity = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(input)
         dispatch(postActivities(input));
         alert('Actividad creada correctamente');
         setInput({

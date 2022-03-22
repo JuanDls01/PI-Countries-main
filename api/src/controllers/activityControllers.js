@@ -2,6 +2,12 @@ const { Country, Activity } = require('../db.js');
 const { DataTypes, Op } = require('sequelize');
 
 const activityCreator = async (name, description, difficulty, duration, season, countries) => {
+    console.log(name,
+        description,
+        difficulty,
+        duration,
+        season,
+        countries)
     let activityCreated = await Activity.create({
         name,
         description,
