@@ -9,10 +9,16 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
         case GET_ALL_COUNTRIES: {
+            console.log(action.payload)
+            const activities = action.payload.filter(country => country.activities.length > 0 && country.activities.map(activity=>activity.name))
+            // const activitiesFiltered = activities.filter((item,index)=>{
+            //     return activities.indexOf(item) === index;
+            // })
+            console.log(activities);
             return {
                 ...state,
                 countries: action.payload,
-                allCountries: action.payload
+                allCountries: action.payload,
             }
         }
         case GET_NAME_COUNTRIES: {

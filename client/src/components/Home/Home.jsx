@@ -20,6 +20,7 @@ const Home = () => {
 
     //Traigo el estado countries
     const allCountries = useSelector((state) => state.countries);
+    const activities = useSelector(state => state.activities);
 
     //currentPage para que si cambio de página el home se vuelva a renderizar:
     const [currentPage, setCurrentPage] = useState(1);
@@ -48,6 +49,7 @@ const Home = () => {
                         getAllCountries={getAllCountries}
                         setOrden={setOrden}
                         setCurrentPage={setCurrentPage}
+                        activities={activities}
                     />
                 <div id='contentBox'>
                         {

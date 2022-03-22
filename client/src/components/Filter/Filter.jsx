@@ -4,7 +4,7 @@ import {filterCountriesByContinent, sortByName, sortByPopulation} from '../../re
 import './Filter.css';
 import SearchBar from '../SearchBar/SearchBar.jsx'
 
-const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden}) => {
+const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden, activities}) => {
     //Función para despachar:
     const dispatch = useDispatch();
 
@@ -69,9 +69,11 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden}) => {
                             <option hidden value='Select'>Activity</option>
                             <option value='All'>Todos</option>
                             {/* {
-                                allCountries && allCountries.map()
+                                activities && activities.map(activity =>(
+                                    <option key={} value={activity}>{activity}</option>
+                                ))
                             } */}
-                            <option value='Rafting'>Rafting</option>
+                            {/* <option value='Rafting'>Rafting</option> */}
                         </select>
                     </div>
                     
