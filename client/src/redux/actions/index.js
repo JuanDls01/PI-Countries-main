@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const GET_ALL_COUNTRIES = 'GET_ALL_COUNTRIES';
 export const FILTER_BY_CONTINENT = 'FILTER_BY_CONTINENT';
-// export const FILTER_BY_ACTIVITIES = 'FILTER_BY_ACTIVITIES';
+export const FILTER_BY_ACTIVITY = 'FILTER_BY_ACTIVITY';
 export const POST_ACTIVITY = 'POST_ACTIVITY';
 export const SORT_BY_POPULATION = 'SORT_BY_POPULATION';
 export const SORT_BY_NAME = 'SORT_BY_NAME';
@@ -35,7 +35,7 @@ export const postActivities = (payload) => async (dispatch) => {
     let json = await axios.post('http://localhost:3001/activity', payload)
     return {
         type: POST_ACTIVITY,
-        payload: payload.name,
+        payload
     }
 
 }
@@ -45,6 +45,14 @@ export const filterCountriesByContinent = (payload) => {
     return {
         type: FILTER_BY_CONTINENT,
         payload //Le mando el value de los options del componente filter
+    }
+}
+
+export const filterCountriesByActivity = (payload) => {
+    console.log(payload)
+    return {
+        type: FILTER_BY_ACTIVITY,
+        payload
     }
 }
 

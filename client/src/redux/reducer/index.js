@@ -1,4 +1,4 @@
-import { GET_ALL_COUNTRIES, FILTER_BY_CONTINENT, GET_NAME_COUNTRIES, SORT_BY_POPULATION, SORT_BY_NAME, POST_ACTIVITY} from "../actions";
+import { GET_ALL_COUNTRIES, FILTER_BY_CONTINENT, FILTER_BY_ACTIVITY, GET_NAME_COUNTRIES, SORT_BY_POPULATION, SORT_BY_NAME, POST_ACTIVITY} from "../actions";
 
 const initialState = {
     countries: [],
@@ -9,16 +9,19 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch(action.type){
         case GET_ALL_COUNTRIES: {
-            console.log(action.payload)
-            const activities = action.payload.filter(country => country.activities.length > 0 && country.activities.map(activity=>activity.name))
-            // const activitiesFiltered = activities.filter((item,index)=>{
-            //     return activities.indexOf(item) === index;
-            // })
-            console.log(activities);
+            let activities = [];
+            action.payload.forEach(country => {
+                if(country.activities.length > 0){
+                    country.activities.forEach(activity => activities.push(activity.name))
+            }}); //['Rafting', 'Futbol', 'Rafting', 'Futbol']
+            const activitiesFiltered = activities.filter((item,index)=>{
+               return activities.indexOf(item) === index;
+            }) //['Rafting', 'Futbol']
             return {
                 ...state,
                 countries: action.payload,
                 allCountries: action.payload,
+                activities: activitiesFiltered,
             }
         }
         case GET_NAME_COUNTRIES: {
@@ -30,6 +33,21 @@ const rootReducer = (state = initialState, action) => {
         case FILTER_BY_CONTINENT: {
             const allCountries = state.allCountries;
             const countriesFiltered = action.payload === 'All'? allCountries : allCountries.filter(country => country.continent === action.payload);
+            console.log(countriesFiltered);
+            return {
+                ...state,
+                countries: countriesFiltered,
+            }
+        }
+        case FILTER_BY_ACTIVITY: {
+            const countriesWithActivities = state.allCountries.filter(country => country.activities.length>0);
+            console.log(countriesWithActivities)
+            let countriesFiltered = [];
+            countriesWithActivities.forEach(country => {
+                country.activities.forEach(activity => {
+                    if(activity.name === action.payload) countriesFiltered.push(country);
+                })
+            })
             console.log(countriesFiltered);
             return {
                 ...state,

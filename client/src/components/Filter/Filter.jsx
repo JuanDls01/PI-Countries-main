@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {filterCountriesByContinent, sortByName, sortByPopulation} from '../../redux/actions';
+import {filterCountriesByContinent, sortByName, sortByPopulation, filterCountriesByActivity} from '../../redux/actions';
 import './Filter.css';
 import SearchBar from '../SearchBar/SearchBar.jsx'
 
@@ -12,6 +12,11 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden, activi
     const handleFilterContinent = (e) => {
         e.preventDefault();
         dispatch(filterCountriesByContinent(e.target.value))
+    }
+
+    //Handle para filtrar por actividad:
+    const handleFilterActivity = (e) => {
+        dispatch(filterCountriesByActivity(e.target.value));
     }
 
     //Handle para ordenar por población:
@@ -65,14 +70,14 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden, activi
                             <option value='Africa'>Africa</option>
                             <option value='Antarctica'>Antartida</option>
                         </select>
-                        <select>
+                        <select onChange={handleFilterActivity}>
                             <option hidden value='Select'>Activity</option>
                             <option value='All'>Todos</option>
-                            {/* {
+                            {
                                 activities && activities.map(activity =>(
-                                    <option key={} value={activity}>{activity}</option>
+                                    <option key={activity} value={activity}>{activity}</option>
                                 ))
-                            } */}
+                            }
                             {/* <option value='Rafting'>Rafting</option> */}
                         </select>
                     </div>
