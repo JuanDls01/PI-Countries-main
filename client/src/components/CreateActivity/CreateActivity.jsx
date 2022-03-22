@@ -40,12 +40,26 @@ const CreateActivity = () => {
         })
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(postActivities(input));
+        alert('Actividad creada correctamente');
+        setInput({
+            name: '',
+            description: '',
+            difficulty: '',
+            duration: '',
+            season: '',
+            countries: [],
+        })
+    }
+
     return(
         <div className='container'>
             <div className='formBox'>
             <Link to='/home'><button>Volver</button></Link>
             <h1>Crear Actividad</h1>
-            <form>
+            <form onSubmit={e=>handleSubmit(e)}>
                 <div className='inputSpecific1'>
                     <label>Nombre de la actividad: </label>
                     <input 
@@ -97,10 +111,11 @@ const CreateActivity = () => {
                         <option value='autumn'>Otoño</option>
                     </select>
                 </div>
-                <div>
+                <div className='inputComponent'>
+                    <label>En que paises se realiza la actividad: </label>
                     <select onChange={(e) => handleSelect(e)}>
                         {allCountries.map(country => (
-                            <option value={country.name}>{country.name}</option>
+                            <option key={country.id} value={country.name}>{country.name}</option>
                         ))}
                     </select>
                 </div>
