@@ -11,10 +11,10 @@ module.exports = (sequelize) => {
       primaryKey: true,
     },
     name: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
     },
     description: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
     },
     difficulty: {
         type: DataTypes.ENUM('1', '2', '3', '4', '5'),
