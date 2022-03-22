@@ -15,8 +15,9 @@
     width: 850px;
     border-radius: 20px;
     display: flex;
-    align-items: space-around;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-around; */
     /* background: #0000ff73 */
 }
 
