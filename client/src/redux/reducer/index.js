@@ -42,12 +42,15 @@ const rootReducer = (state = initialState, action) => {
         case FILTER_BY_ACTIVITY: {
             const countriesWithActivities = state.allCountries.filter(country => country.activities.length>0);
             console.log(countriesWithActivities)
-            let countriesFiltered = [];
+            let countriesSelected = [];
             countriesWithActivities.forEach(country => {
                 country.activities.forEach(activity => {
-                    if(activity.name === action.payload) countriesFiltered.push(country);
+                    if(activity.name === action.payload) countriesSelected.push(country);
                 })
             })
+            const countriesFiltered = countriesSelected.filter((item,index)=>{
+                return countriesSelected.indexOf(item) === index;
+             })
             console.log(countriesFiltered);
             return {
                 ...state,
