@@ -48,7 +48,7 @@ const rootReducer = (state = initialState, action) => {
                     if(activity.name === action.payload) countriesSelected.push(country);
                 })
             })
-            const countriesFiltered = countriesSelected.filter((item,index)=>{
+            const countriesFiltered = action.payload === 'All'? state.allCountries: countriesSelected.filter((item,index)=>{
                 return countriesSelected.indexOf(item) === index;
              })
             console.log(countriesFiltered);
