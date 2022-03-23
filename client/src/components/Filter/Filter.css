@@ -53,12 +53,13 @@
 
 
 .filterBox button {
-    /* width: 353px; */
-    height: 45px;
-    background-color: #464655;
+    width: 200px;
+    height: 33px;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 15px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    border-radius: 5px;
+    background-color: #000000;
+    border: 1px solid rgba(172, 172, 172, 0.35);
+    border-radius: 3px;
 }

@@ -85,7 +85,7 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden, activi
                 </div>
                 <div className='containBox'>
                     <SearchBar setCurrentPage={setCurrentPage}/>
-                    {/* <button onClick={e=> handleRefresh(e)}>Refresh</button> */}
+                    <button onClick={e=> handleRefresh(e)}>Refresh</button>
                 </div>
                 
                 
