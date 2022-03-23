@@ -15,6 +15,13 @@
     align-items: flex-start;
 }
 
+.Card:hover {
+    width: 205px;
+    height: 227px;
+    border: 4px solid #ffffff;
+    /* border: 3px solid #374658; */
+}
+
 .Card img {
     background-size: cover;
     width: 200px;
@@ -22,7 +29,12 @@
     border-radius: 5px;
     /* padding: 3px; */
     /* border-radius: 10px; */
-    object-fit: cover
+    object-fit: cover;
+}
+
+.Card:hover img {
+    width: 205px;
+    object-fit: cover;
 }
 
 .Card h3 {
@@ -36,6 +48,9 @@
     padding: 5px 5px 0px 5px;
     height: 38px;
     width: 190px;
+}
+.Card h3:hover {
+    font-size: 16px;
 }
 
 .Card h5 {

@@ -6,16 +6,22 @@ export const FILTER_BY_ACTIVITY = 'FILTER_BY_ACTIVITY';
 export const POST_ACTIVITY = 'POST_ACTIVITY';
 export const SORT_BY_POPULATION = 'SORT_BY_POPULATION';
 export const SORT_BY_NAME = 'SORT_BY_NAME';
-export const GET_NAME_COUNTRIES = 'GET_NAME_COUNTRIES'
+export const GET_NAME_COUNTRIES = 'GET_NAME_COUNTRIES';
+export const GET_COUNTRY_DETAILS = 'GET_COUNTRY_DETAILS';
 
 export const getAllCountries = () => async (dispatch) => {
-    let json = await axios.get('http://localhost:3001/countries');
-    return dispatch(
-        {
-            type: GET_ALL_COUNTRIES,
-            payload: json.data
-        }
-    );
+    try {
+        let json = await axios.get('http://localhost:3001/countries');
+        return dispatch(
+            {
+                type: GET_ALL_COUNTRIES,
+                payload: json.data
+            }
+        );
+    } catch (error) {
+        console.log('El getAllCountries fallo')
+    }
+    
 }
 
 export const getNameCountries = (name) => async (dispatch) => {
@@ -26,17 +32,23 @@ export const getNameCountries = (name) => async (dispatch) => {
             payload: json.data
         })
     } catch (error) {
-        console.log('No se encontro el país buscado')
+        console.log('El getNameCountries fallo')
     }
     
 }
 
 export const postActivities = (payload) => async (dispatch) => {
-    let json = await axios.post('http://localhost:3001/activity', payload)
-    return {
-        type: POST_ACTIVITY,
-        payload
+    try {
+        let json = await axios.post('http://localhost:3001/activity', payload)
+        return dispatch({
+            type: POST_ACTIVITY,
+            payload
+        })
+    } catch (error) {
+        console.log('El post activities fallo')
     }
+
+    
 
 }
 
@@ -67,6 +79,20 @@ export const sortByName = (payload) => {
     return {
         type: SORT_BY_NAME,
         payload
+    }
+}
+
+export const getCountryDetail = (idPais) => async (dispatch) => {
+    try {
+        console.log('Llega hasta acá almenos')
+        const json = await axios.get(`http://localhost:3001/countries/${idPais}`);
+        console.log(json);
+        return dispatch({
+            type: GET_COUNTRY_DETAILS,
+            payload: json.data
+        })
+    } catch (error) {
+        console.log('El getCountryDetail fallo')
     }
 }
 

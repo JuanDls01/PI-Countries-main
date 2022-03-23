@@ -56,6 +56,7 @@ const Home = () => {
                             currentCountries && currentCountries.map((country) => {
                                 return <CountryCard 
                                     key={country.id} 
+                                    id={country.id}
                                     name={country.name}
                                     imgFlag={country.imgFlag}
                                     continent={country.continent}
