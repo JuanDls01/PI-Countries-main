@@ -109,7 +109,10 @@ const CreateActivity = () => {
     return(
         <div className='container'>
             <div className='formBox'>
-            <Link to='/home'><button>Volver</button></Link>
+            <div id='backBox'>
+                <Link to='/home'><button className='backHome'>Volver</button></Link>
+            </div>
+            
             <h1>Crear Actividad</h1>
             <form onSubmit={e=>handleSubmit(e)}>
                 <div className='inputSpecific1'>

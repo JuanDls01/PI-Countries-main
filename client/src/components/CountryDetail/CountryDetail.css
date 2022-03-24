@@ -18,12 +18,12 @@
 }
 
 .backHome {
-    width: 80px;
-    height: 45px;
+    width: 70px;
+    height: 38px;
     margin:10px;
     background-color: #464655;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 13px;
     display: flex;
     justify-content: space-around;
     align-items: center;

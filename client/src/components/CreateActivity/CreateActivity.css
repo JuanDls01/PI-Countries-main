@@ -21,6 +21,12 @@
     /* background: #0000ff73 */
 }
 
+#backBox {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
 .formComponent {
     display: flex;
     flex-direction: column;
