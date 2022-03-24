@@ -22,6 +22,9 @@ const CountryDetail = ({props}) => {
             {
                 specificCountry.id ?
                 <div className='detailsBox'>
+                    <div>
+                        <Link to='/home'><button className='backHome'>Go back</button></Link>
+                    </div>
                     <h1 id='countryName'>{specificCountry.name}</h1>
                     <div id='infoBox'>
                         <img src={specificCountry.imgFlag} alt='Imagen Bandera' id='countryFlag'/>

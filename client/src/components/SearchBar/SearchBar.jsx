@@ -12,7 +12,6 @@ const SearchBar = ({setCurrentPage}) => {
 
     //Creo un handle que cada vez que escriba en el searchbar lo guarda en el estado:
     const handleWantedCountries = (e) => {
-        e.preventDefault();
         setName(e.target.value);
     }
 
@@ -32,7 +31,7 @@ const SearchBar = ({setCurrentPage}) => {
                     value={name}
                     onChange={(e) => handleWantedCountries(e)}
                 />
-                <button type='submit' onClick={(e) => handleSubmit(e)}>
+                <button className='pointer' type='submit' onClick={(e) => handleSubmit(e)}>
                     <img src={lupa} alt='lupita-icon'/>
                 </button>
         </div>

@@ -17,8 +17,24 @@
     /* flex-direction: column; */
 }
 
+.backHome {
+    width: 80px;
+    height: 45px;
+    margin:10px;
+    background-color: #464655;
+    color: #ffffff;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    font-weight: bold;
+    cursor:pointer;
+}
+
 #countryName {
-    margin: 25px;
     font-size: 55px;
     color: #ffffff;
 }

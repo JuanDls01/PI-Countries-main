@@ -6,6 +6,10 @@
   background-color: #000000;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 #NavBar {
   position: fixed;
   width: 100%;
