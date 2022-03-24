@@ -1,0 +1,70 @@
+.container {
+    height: 1240px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding-top: 140px;
+    background-image: url('../../img/world3.png');
+    background-size: 100% 100%;
+}
+
+.detailsBox {
+    background-color: #dbd8d8ab;
+    height: 800px;
+    width: 1300px;
+    border-radius: 20px;
+    /* flex-direction: column; */
+}
+
+#countryName {
+    margin: 25px;
+    font-size: 55px;
+    color: #ffffff;
+}
+
+#infoBox {
+    height: 70%;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#countryFlag {
+    height: 400px;
+    width: 600px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+#textBox {
+    height: 90%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.details {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+
+.titleText {
+    font-size: 30px;
+    margin-right: 15px;
+}
+
+#activities {
+    height: 80px;   
+}
+
+.detail {
+    font-size: 25px;
+
+}
+

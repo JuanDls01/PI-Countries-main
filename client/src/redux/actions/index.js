@@ -84,9 +84,7 @@ export const sortByName = (payload) => {
 
 export const getCountryDetail = (idPais) => async (dispatch) => {
     try {
-        console.log('Llega hasta acá almenos')
         const json = await axios.get(`http://localhost:3001/countries/${idPais}`);
-        console.log(json);
         return dispatch({
             type: GET_COUNTRY_DETAILS,
             payload: json.data
