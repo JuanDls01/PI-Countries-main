@@ -9,7 +9,7 @@
     background-size: 100% 100%;
 }
 
-.formBox {
+#formBox {
     background-color: #dbd8d8ab;
     height: 950px;
     width: 850px;
@@ -27,6 +27,12 @@
     justify-content: flex-start;
 }
 
+#formBox h1{
+    font-size: 55px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
 .formComponent {
     display: flex;
     flex-direction: column;
@@ -40,45 +46,54 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-around;
 }
 .inputComponent input {
     width: 280px;
-    height: 40px;
+    height: 35px;
     border: 5px;
     border-color: #ECECEC;
     border-radius: 5px;
 }
+.formLabel {
+    margin-bottom: 10px;
+}
 
-.inputSpecific1 {
+#inputName {
     width: 700px;
     height: 100px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-around;
 }
 
-.inputSpecific2 {
+
+#inputDescription {
     width: 700px;
-    height: 100px;
+    height: 140px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-around;
 }
 
-.inputSpecific1 input {
+#inputName input {
     width: 280px;
-    height: 40px;
+    height: 35px;
     border: 5px;
     border-color: #ECECEC;
     border-radius: 5px;
 }
 
-.inputSpecific2 input {
+#inputDescription input {
     width: 500px;
     height: 80px;
+    border: 5px;
+    border-color: #ECECEC;
+    border-radius: 5px;
+}
+
+.selectForm {
+    width: 200px;
+    height: 25px;
     border: 5px;
     border-color: #ECECEC;
     border-radius: 5px;

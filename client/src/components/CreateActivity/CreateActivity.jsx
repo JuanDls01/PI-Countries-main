@@ -39,7 +39,7 @@ const CreateActivity = () => {
     //Me guardo los países en allCountries
     const allCountries = useSelector((state) => state.countries);
 
-    //Una vez montado despacho la acción para traerme los países:
+    //Por si llego a ir desde la langing page hasta el create Activity:
     useEffect(()=>{
         dispatch(getAllCountries());
     }, [dispatch]);
@@ -89,6 +89,7 @@ const CreateActivity = () => {
             ...input,
             countries: [...input.countries, e.target.value],
         }));
+        console.log(input.countries)
     }
 
     const handleSubmit = (e) => {
@@ -106,99 +107,115 @@ const CreateActivity = () => {
         })
     }
 
+    const onClose = (countryDelete) => {
+        setInput({
+            ...input,
+            countries: input.countries.filter(country => country !== countryDelete)
+        })
+        console.log(input)
+    }
+
     return(
         <div className='container'>
-            <div className='formBox'>
-            <div id='backBox'>
-                <Link to='/home'><button className='backHome'>Volver</button></Link>
-            </div>
-            
-            <h1>Crear Actividad</h1>
-            <form onSubmit={e=>handleSubmit(e)}>
-                <div className='inputSpecific1'>
-                    <label>Nombre de la actividad: </label>
-                    <input 
-                    type='text'
-                    value={input.name}
-                    name='name'
-                    onChange={handleChange}
-                    />
-                    {errors.name && (
-                        <p>{errors.name}</p>
-                    )}
+            <div id='formBox'>
+                <div id='backBox'>
+                    <Link to='/home'><button className='backHome'>Volver</button></Link>
                 </div>
-                <div className='inputSpecific2'>
-                    <label>Description: </label>
-                    <input
-                    type='text'
-                    value={input.description}
-                    name='description'
-                    onChange={handleChange}
-                    />
-                    {errors.description && (
-                        <p>{errors.description}</p>
-                    )}
-                </div>
-                <div className='inputComponent'>
-                    <label>Dificultad: </label>
-                    <input
-                    className='indputGeneric'
-                    type='number'
-                    value={input.difficulty}
-                    name='difficulty'
-                    onChange={handleChange}        
-                    />
-                    <p>1 representa la menor dificultad y 5 la mayor dificultad</p>
-                    {errors.difficulty && (
-                        <p>{errors.difficulty}</p>
-                    )}
-                </div>
-                <div className='inputComponent'>
-                    <label>Duración (hs.): </label>
-                    <input
+                
+                <h1>Crear Actividad</h1>
+                <form onSubmit={e=>handleSubmit(e)}>
+                    <div id='inputName'>
+                        <label className='formLabel'>Nombre de la actividad: </label>
+                        <input 
+                        type='text'
+                        value={input.name}
+                        name='name'
+                        onChange={handleChange}
+                        />
+                        {errors.name && (
+                            <p>{errors.name}</p>
+                        )}
+                    </div>
+                    <div id='inputDescription'>
+                        <label className='formLabel'>Description: </label>
+                        <input
+                        type='text'
+                        value={input.description}
+                        name='description'
+                        onChange={handleChange}
+                        />
+                        {errors.description && (
+                            <p>{errors.description}</p>
+                        )}
+                    </div>
+                    <div className='inputComponent'>
+                        <label className='formLabel'>Dificultad: </label>
+                        <input
                         className='indputGeneric'
                         type='number'
-                        value={input.duration}
-                        name='duration'
-                        onChange={handleChange}
-                    />
-                    {errors.duration && (
-                        <p>{errors.duration}</p>
-                    )}
-                </div>
-                <div >
-                    <label>Temporada ideal para realizarla: </label>
-                    <select onChange={(e) => handleSelect2(e)}>
-                        <option hidden value='Temporada'>Temporada</option>
-                        <option value='winter'>Invierno</option>
-                        <option value='summer'>Verano</option>
-                        <option value='autumn'>Otoño</option>
-                        <option value='spring'>Primavera</option>
-                    </select>
-                    {errors.season && (
-                        <p>{errors.season}</p>
-                    )}
-                </div>
-                <div className='inputComponent'>
-                    <label>En que paises se realiza la actividad: </label>
-                    <select onChange={(e) => handleSelect(e)}>
-                        <option hidden value='Paises'>Seleccione aquí</option>
-                        {allCountries.map(country => (
-                            <option key={country.id} value={country.name}>{country.name}</option>
-                        ))}
-                    </select>
-                    {errors.countries && (
-                        <p>{errors.countries}</p>
-                    )}
-                </div>
-                <div>
-                    <ul><li>{input.countries.map(country => country + ', ')}</li></ul>
-                </div>
-                {
-                    (Object.keys(errors).length === 0? <button type='submit'>Crear Actividad</button>: null)
-                }
-                
-            </form>
+                        value={input.difficulty}
+                        name='difficulty'
+                        onChange={handleChange}        
+                        />
+                        <p>1 representa la menor dificultad y 5 la mayor dificultad</p>
+                        {errors.difficulty && (
+                            <p>{errors.difficulty}</p>
+                        )}
+                    </div>
+                    <div className='inputComponent'>
+                        <label className='formLabel'>Duración (hs.): </label>
+                        <input
+                            className='indputGeneric'
+                            type='number'
+                            value={input.duration}
+                            name='duration'
+                            onChange={handleChange}
+                        />
+                        {errors.duration && (
+                            <p>{errors.duration}</p>
+                        )}
+                    </div>
+                    <div className='inputComponent'>
+                        <label className='formLabel'>Temporada ideal para realizarla: </label>
+                        <select className='selectForm' onChange={(e) => handleSelect2(e)}>
+                            <option hidden value='Temporada'>Temporada</option>
+                            <option value='winter'>Invierno</option>
+                            <option value='summer'>Verano</option>
+                            <option value='autumn'>Otoño</option>
+                            <option value='spring'>Primavera</option>
+                        </select>
+                        {errors.season && (
+                            <p>{errors.season}</p>
+                        )}
+                    </div>
+                    <div className='inputComponent'>
+                        <label className='formLabel'>En que paises se realiza la actividad: </label>
+                        <select className='selectForm' onChange={(e) => handleSelect(e)}>
+                            <option hidden value='Paises'>Seleccione aquí</option>
+                            {allCountries.map(country => (
+                                <option key={country.id} value={country.name}>{country.name}</option>
+                            ))}
+                        </select>
+                        {errors.countries && (
+                            <p>{errors.countries}</p>
+                        )}
+                    </div>
+                    <div>
+                        {input.countries.map(country => {
+                            return (
+                                <div key={country}>
+                                    <button onClick={()=>onClose(country)}>X</button>
+                                    <h4>{country}</h4>
+                                </div>
+                            )
+                        })}
+                        {/* <ul><li>{input.countries.map(country => country + ', ')}</li></ul> */}
+                    </div>
+                    {
+                        (Object.keys(errors).length === 0 && input.countries.length>0 ? <button type='submit'>Crear Actividad</button>: null)
+                    }
+                    
+                </form>
             </div>
         </div>
     )
