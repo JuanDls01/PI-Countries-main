@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {postActivities, getAllCountries} from '../../redux/actions';
-import './CreateActivity.css';
+import style from './CreateActivity.module.css';
 
 export const validate = (input) => {
         console.log(input)
@@ -116,16 +116,16 @@ const CreateActivity = () => {
     }
 
     return(
-        <div className='container'>
-            <div id='formBox'>
-                <div id='backBox'>
+        <div className={style.container}>
+            <div className={style.formBox}>
+                <div className={style.backBox}>
                     <Link to='/home'><button className='backHome'>Volver</button></Link>
                 </div>
                 
                 <h1>Crear Actividad</h1>
                 <form onSubmit={e=>handleSubmit(e)}>
-                    <div id='inputName'>
-                        <label className='formLabel'>Nombre de la actividad: </label>
+                    <div className={style.inputName}>
+                        <label className={style.formLabel}>Nombre: </label>
                         <input 
                         type='text'
                         value={input.name}
@@ -133,11 +133,11 @@ const CreateActivity = () => {
                         onChange={handleChange}
                         />
                         {errors.name && (
-                            <p>{errors.name}</p>
+                            <p className={style.errors}>{errors.name}</p>
                         )}
                     </div>
-                    <div id='inputDescription'>
-                        <label className='formLabel'>Description: </label>
+                    <div className={style.inputDescription}>
+                        <label className={style.formLabel}>Descripción: </label>
                         <input
                         type='text'
                         value={input.description}
@@ -145,13 +145,13 @@ const CreateActivity = () => {
                         onChange={handleChange}
                         />
                         {errors.description && (
-                            <p>{errors.description}</p>
+                            <p className={style.errors}>{errors.description}</p>
                         )}
                     </div>
-                    <div className='inputComponent'>
-                        <label className='formLabel'>Dificultad: </label>
+                    <div className={style.inputComponent}>
+                        <label className={style.formLabel}>Dificultad: </label>
                         <input
-                        className='indputGeneric'
+                        className={style.indputGeneric}
                         type='number'
                         value={input.difficulty}
                         name='difficulty'
@@ -159,25 +159,25 @@ const CreateActivity = () => {
                         />
                         <p>1 representa la menor dificultad y 5 la mayor dificultad</p>
                         {errors.difficulty && (
-                            <p>{errors.difficulty}</p>
+                            <p className={style.errors}>{errors.difficulty}</p>
                         )}
                     </div>
-                    <div className='inputComponent'>
-                        <label className='formLabel'>Duración (hs.): </label>
+                    <div className={style.inputComponent}>
+                        <label className={style.formLabel}>Duración (hs.): </label>
                         <input
-                            className='indputGeneric'
+                            className={style.indputGeneric}
                             type='number'
                             value={input.duration}
                             name='duration'
                             onChange={handleChange}
                         />
                         {errors.duration && (
-                            <p>{errors.duration}</p>
+                            <p className={style.errors}>{errors.duration}</p>
                         )}
                     </div>
-                    <div className='inputComponent'>
-                        <label className='formLabel'>Temporada ideal para realizarla: </label>
-                        <select className='selectForm' onChange={(e) => handleSelect2(e)}>
+                    <div className={style.inputComponent}>
+                        <label className={style.formLabel}>Temporada ideal para realizarla: </label>
+                        <select className={style.selectForm} onChange={(e) => handleSelect2(e)}>
                             <option hidden value='Temporada'>Temporada</option>
                             <option value='winter'>Invierno</option>
                             <option value='summer'>Verano</option>
@@ -185,27 +185,27 @@ const CreateActivity = () => {
                             <option value='spring'>Primavera</option>
                         </select>
                         {errors.season && (
-                            <p>{errors.season}</p>
+                            <p className={style.errors}>{errors.season}</p>
                         )}
                     </div>
-                    <div className='inputComponent'>
-                        <label className='formLabel'>En que paises se realiza la actividad: </label>
-                        <select className='selectForm' onChange={(e) => handleSelect(e)}>
+                    <div className={style.inputComponent}>
+                        <label className={style.formLabel}>En que paises se realiza la actividad: </label>
+                        <select className={style.selectForm} onChange={(e) => handleSelect(e)}>
                             <option hidden value='Paises'>Seleccione aquí</option>
                             {allCountries.map(country => (
                                 <option key={country.id} value={country.name}>{country.name}</option>
                             ))}
                         </select>
                         {errors.countries && (
-                            <p>{errors.countries}</p>
+                            <p className={style.errors}>{errors.countries}</p>
                         )}
                     </div>
-                    <div>
+                    <div className={style.countriesSelected}>
                         {input.countries.map(country => {
                             return (
-                                <div key={country}>
-                                    <button onClick={()=>onClose(country)}>X</button>
+                                <div key={country} className={style.countrySelected}>
                                     <h4>{country}</h4>
+                                    <button onClick={()=>onClose(country)}>X</button>
                                 </div>
                             )
                         })}
