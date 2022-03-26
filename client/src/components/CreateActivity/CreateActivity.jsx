@@ -115,11 +115,22 @@ const CreateActivity = () => {
         console.log(input)
     }
 
+    const cleanInputs = () => {
+        setInput({
+            name: '',
+            description: '',
+            difficulty: '',
+            duration: '',
+            season: '',
+            countries: [],
+        })
+    }
+
     return(
         <div className={style.container}>
             <div className={style.formBox}>
                 <div className={style.backBox}>
-                    <Link to='/home'><button className='backHome'>Volver</button></Link>
+                    <Link to='/home'><button className={style.backHome}>Volver</button></Link>
                 </div>
                 
                 <h1>Crear Actividad</h1>
@@ -211,9 +222,13 @@ const CreateActivity = () => {
                         })}
                         {/* <ul><li>{input.countries.map(country => country + ', ')}</li></ul> */}
                     </div>
-                    {
-                        (Object.keys(errors).length === 0 && input.countries.length>0 ? <button type='submit'>Crear Actividad</button>: null)
-                    }
+                    <input type='button' className={style.buttons} onClick={(e)=>cleanInputs(e)} value='Limpiar campos'/>
+                    <div>
+                        {
+                            (Object.keys(errors).length === 0 && input.countries.length>0 ? <button type='submit' className={style.buttons}>Crear Actividad</button>: null)
+                        }
+                    </div>
+                    
                     
                 </form>
             </div>
