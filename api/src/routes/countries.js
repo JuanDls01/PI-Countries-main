@@ -29,9 +29,10 @@ router.get('/:idPais', async (req,res,next) =>{
         specificCountry ?
         res.status(200).json(specificCountry) :
         res.status(404).send('No está el país, sorry');
-        } catch (error) {
-            next(error);
-        }
+    } 
+    catch (error) {
+        next(error);
+    }
 })
 
 module.exports = router;

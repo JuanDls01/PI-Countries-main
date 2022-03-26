@@ -97,6 +97,7 @@
     border: 5px;
     border-color: #ECECEC;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .errors {
