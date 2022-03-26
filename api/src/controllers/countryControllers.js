@@ -42,7 +42,7 @@ const getSpecificCountries = async (name) => {
     const specificInfo = await Country.findAll({
         where: {
             name: {
-                [Op.or]: { //Está alpedo pero bue
+                [Op.or]: { 
                     [Op.like]: `%${nameUpper}%`
                 }
             }

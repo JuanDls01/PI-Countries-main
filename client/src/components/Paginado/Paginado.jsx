@@ -1,11 +1,15 @@
 import React from 'react';
 import './Paginado.css';
 
-const Paginado = ({countriesPerPage, allCountries, paginado}) => {
+const Paginado = ({countriesPerPage, allCountries, setCurrentPage}) => {
     const pageNumber = [];
 
+    const paginado = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+
     //Inserto en pageNumber la cantidad de páginas que debo tener:
-    for (let i=1; i<=Math.ceil(allCountries/countriesPerPage); i++){
+    for (let i=1; i<=Math.ceil(allCountries/10); i++){
         pageNumber.push(i);
     }
 

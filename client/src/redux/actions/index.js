@@ -11,7 +11,7 @@ export const GET_COUNTRY_DETAILS = 'GET_COUNTRY_DETAILS';
 
 export const getAllCountries = () => async (dispatch) => {
     try {
-        let json = await axios.get('http://localhost:3001/countries');
+        let json = await axios.get('http://localhost:3001/countries'); // /countries
         return dispatch(
             {
                 type: GET_ALL_COUNTRIES,
@@ -26,7 +26,7 @@ export const getAllCountries = () => async (dispatch) => {
 
 export const getNameCountries = (name) => async (dispatch) => {
     try {
-        let json = await axios.get(`http://localhost:3001/countries?name=${name}`)
+        let json = await axios.get(`http://localhost:3001/countries?name=${name}`) // /countries?name=${name}
         return dispatch({
             type: GET_NAME_COUNTRIES,
             payload: json.data
@@ -39,7 +39,7 @@ export const getNameCountries = (name) => async (dispatch) => {
 
 export const postActivities = (payload) => async (dispatch) => {
     try {
-        let json = await axios.post('http://localhost:3001/activity', payload)
+        let json = await axios.post('http://localhost:3001/activity', payload) // /activity
         return dispatch({
             type: POST_ACTIVITY,
             payload
@@ -84,7 +84,7 @@ export const sortByName = (payload) => {
 
 export const getCountryDetail = (idPais) => async (dispatch) => {
     try {
-        const json = await axios.get(`http://localhost:3001/countries/${idPais}`);
+        const json = await axios.get(`http://localhost:3001/countries/${idPais}`); // /countries/${idPais}
         return dispatch({
             type: GET_COUNTRY_DETAILS,
             payload: json.data
@@ -93,18 +93,3 @@ export const getCountryDetail = (idPais) => async (dispatch) => {
         console.log('El getCountryDetail fallo')
     }
 }
-
-// export const setActivities = () => {
-//     console.log('La acción llega')
-//     return {
-//         type: SET_ACTIVITIES,
-
-//     }
-// }
-
-// export const filterCountriesByActivity = (payload) => {
-//     return {
-//         type: FILTER_BY_ACTIVITIES,
-//         payload
-//     }
-// }

@@ -35,9 +35,7 @@ const Home = () => {
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
 
     //¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡VER PQ PAGINADO DEBERÍA IR DENTRO DE PAGINADO LA LÓGICA!!!!!!!!!!!!!!!!!!!!!!!
-    const paginado = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    }
+    
 
 
     return (
@@ -65,7 +63,7 @@ const Home = () => {
                         }
                 </div>
                 <div id='indexBox'>
-                    <Paginado countriesPerPage={countriesPerPage} paginado={paginado} allCountries={allCountries.length} />
+                    <Paginado countriesPerPage={countriesPerPage} setCurrentPage={setCurrentPage} allCountries={allCountries.length} />
                 </div>
                 
             </div>

@@ -7,7 +7,11 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import store from './redux/store/index.js';
+import axios from 'axios';
+// dotenv.config();
+// instalar dotenv
 
+// axios.default.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
 ReactDOM.render(
   <Provider store={store}>
