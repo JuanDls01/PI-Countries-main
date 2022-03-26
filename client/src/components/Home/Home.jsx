@@ -34,9 +34,6 @@ const Home = () => {
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
 
-    //¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡VER PQ PAGINADO DEBERÍA IR DENTRO DE PAGINADO LA LÓGICA!!!!!!!!!!!!!!!!!!!!!!!
-    
-
 
     return (
         <div className='Home'>

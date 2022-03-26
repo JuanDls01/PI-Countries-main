@@ -1,7 +1,7 @@
 import React from 'react';
 import './Paginado.css';
 
-const Paginado = ({countriesPerPage, allCountries, setCurrentPage}) => {
+const Paginado = ({allCountries, setCurrentPage}) => {
     const pageNumber = [];
 
     const paginado = (pageNumber) => {

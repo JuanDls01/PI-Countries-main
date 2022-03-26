@@ -17,7 +17,11 @@ const postApiInfoToCountryDb = async () => {
             population: el.population,
         }
     });
-    await apiInfo.forEach(async el => await Country.create(el));
+    await apiInfo.forEach(async el => {
+        await Country.bulkCreate(el)
+        
+    });
+    
 };
 
 const getSpecificCountry = async (idPais) => {
