@@ -7,7 +7,7 @@ import CountryCard from '../CountryCard/CountryCard';
 import Paginado from '../Paginado/Paginado';
 import planet from '../../img/world1.png';
 
-import './Home.css';
+import style from './Home.module.css';
 
 const Home = () => {
     
@@ -36,9 +36,9 @@ const Home = () => {
 
 
     return (
-        <div className='Home'>
-            <div className='containerImg'></div>
-            <div className='containerHome'>
+        <div className={style.Home}>
+            <div className={style.containerImg}></div>
+            <div className={style.containerHome}>
                     <Filter 
                         allCountries={allCountries}
                         getAllCountries={getAllCountries}
@@ -46,7 +46,7 @@ const Home = () => {
                         setCurrentPage={setCurrentPage}
                         activities={activities}
                     />
-                <div id='contentBox'>
+                <div className={style.contentBox}>
                         {
                             currentCountries && currentCountries.map((country) => {
                                 return <CountryCard 
@@ -59,7 +59,7 @@ const Home = () => {
                             })
                         }
                 </div>
-                <div id='indexBox'>
+                <div className={style.indexBox}>
                     <Paginado countriesPerPage={countriesPerPage} setCurrentPage={setCurrentPage} allCountries={allCountries.length} />
                 </div>
                 

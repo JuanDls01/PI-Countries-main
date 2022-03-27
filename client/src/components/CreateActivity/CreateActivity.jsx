@@ -124,6 +124,8 @@ const CreateActivity = () => {
             season: '',
             countries: [],
         })
+        setErrors({})
+
     }
 
     return(

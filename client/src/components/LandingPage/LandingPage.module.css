@@ -6,7 +6,7 @@
     background: linear-gradient(to bottom right, #0F3460, #09090F);
 }
 
-#info {
+.info {
     height: 400px;
     padding: 30px;
     display: flex;
@@ -15,14 +15,14 @@
     align-items: flex-start;
 }
 
-#info h1 {
+.info h1 {
     font-family: 'Spartan', sans-serif;
     font-size: 72px;
     font-weight: bold;
     color: #FFFFFF;
 }
 
-#info p {
+.info p {
     font-family: 'Montserrat', sans-serif;
     font-size: 25px;
     font-weight: bold;

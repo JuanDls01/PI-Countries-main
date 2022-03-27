@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import { getNameCountries } from '../../redux/actions';
 import lupa from '../../icons/lupita.png';
-import './SearchBar.css'
+import style from './SearchBar.module.css'
 
 const SearchBar = ({setCurrentPage}) => {
     const dispatch = useDispatch();
@@ -24,14 +24,14 @@ const SearchBar = ({setCurrentPage}) => {
     }
 
     return (
-        <div className='SearchContainer'>
+        <div className={style.SearchContainer}>
                 <input
                     type="text"
                     placeholder="Search countries here..."
                     value={name}
                     onChange={(e) => handleWantedCountries(e)}
                 />
-                <button className='pointer' type='submit' onClick={(e) => handleSubmit(e)}>
+                <button type='submit' onClick={(e) => handleSubmit(e)}>
                     <img src={lupa} alt='lupita-icon'/>
                 </button>
         </div>

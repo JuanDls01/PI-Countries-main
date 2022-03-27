@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 import arrow from '../../icons/Arrow.png';
 import flags from '../../img/flags2.png';
 import {useEffect} from 'react';
-import './LandingPage.css'
+import style from './LandingPage.module.css'
 
 const LandingPage = () => {
     useEffect(()=>{
         axios.post('http://localhost:3001/')
     });
     return (
-        <div className='body'>
-            <div id='info'>
+        <div className={style.body}>
+            <div className={style.info}>
                 <h1>Hello World!</h1>
                 <p>
                 En esta página vas a encontrar un listado de países  de todo el mundo, 
@@ -21,7 +21,7 @@ const LandingPage = () => {
                 a uno o más países
                 </p>
                 <Link to='/home'>
-                    <button className='startButtom'>
+                    <button className={style.startButtom}>
                         Comencemos
                         <img src={arrow} alt='arrow-img'/>
                     </button>

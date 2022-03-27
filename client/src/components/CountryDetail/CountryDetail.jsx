@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCountryDetail } from '../../redux/actions';
-import './CountryDetail.css'
+import style from './CountryDetail.module.css'
 
 const CountryDetail = ({props}) => {
 
@@ -18,44 +18,44 @@ const CountryDetail = ({props}) => {
     const specificCountry = useSelector((state) => state.details);
     
     return (
-        <div className='container'>
+        <div className={style.container}>
             {
                 specificCountry.id ?
-                <div className='detailsBox'>
+                <div className={style.detailsBox}>
                     <div>
-                        <Link to='/home'><button className='backHome'>Go back</button></Link>
+                        <Link to='/home'><button className={style.backHome}>Volver</button></Link>
                     </div>
-                    <h1 id='countryName'>{specificCountry.name}</h1>
-                    <div id='infoBox'>
-                        <img src={specificCountry.imgFlag} alt='Imagen Bandera' id='countryFlag'/>
-                        <div id='textBox'>
-                            <div className='details'>
-                                <h4 className='titleText'>ID: </h4>
-                                <p className='detail'>{specificCountry.id}</p>
+                    <h1 className={style.countryName}>{specificCountry.name}</h1>
+                    <div className={style.infoBox}>
+                        <img src={specificCountry.imgFlag} alt='Imagen Bandera' className={style.countryFlag} />
+                        <div className={style.textBox}>
+                            <div className={style.details}>
+                                <h4 className={style.titleText}>ID: </h4>
+                                <p className={style.detail}>{specificCountry.id}</p>
                             </div>
-                            <div className='details'>
-                                <h4 className='titleText'>Capital: </h4>
-                                <p className='detail'>{specificCountry.capital}</p>
+                            <div className={style.details}>
+                                <h4 className={style.titleText}>Capital: </h4>
+                                <p className={style.detail}>{specificCountry.capital}</p>
                             </div>
-                            <div className='details'>
-                                <h4 className='titleText'>Subregion: </h4>
-                                <p className='detail'>{specificCountry.subregion}</p>
+                            <div className={style.details}>
+                                <h4 className={style.titleText}>Subregion: </h4>
+                                <p className={style.detail}>{specificCountry.subregion}</p>
                             </div>
-                            <div className='details'>
-                                <h4 className='titleText'>Area (m2): </h4>
-                                <p className='detail'>{specificCountry.area}</p>
+                            <div className={style.details}>
+                                <h4 className={style.titleText}>Area (m2): </h4>
+                                <p className={style.detail}>{specificCountry.area}</p>
                             </div>
-                            <div className='details'>
-                                <h4 className='titleText'>Population: </h4>
-                                <p className='detail'>{specificCountry.population}</p>
+                            <div className={style.details}>
+                                <h4 className={style.titleText}>Population: </h4>
+                                <p className={style.detail}>{specificCountry.population}</p>
                             </div>
-                            <div className='details' id='activities'>
-                                <h4 className='titleText' >Activities: </h4>
+                            <div className={style.details}>
+                                <h4 className={style.titleText} >Activities: </h4>
                                 {(!specificCountry.activities)? 
                                 specificCountry.activities.map(activity=>{
-                                    return (<p key={activity.name} className='detail'>{activity.name}</p>)
+                                    return (<p key={activity.name} className={style.detail}>{activity.name}</p>)
                                 }):
-                                <p className='detail'>Aún no hay actividades asignadas a este país</p>}
+                                <p className={style.detail}>Aún no hay actividades asignadas a este país</p>}
                                 
                             </div>
                             

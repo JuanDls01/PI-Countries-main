@@ -34,12 +34,12 @@
     cursor:pointer;
 }
 
-#countryName {
+.countryName {
     font-size: 55px;
     color: #ffffff;
 }
 
-#infoBox {
+.infoBox {
     height: 70%;
     margin: 10px;
     display: flex;
@@ -48,14 +48,14 @@
     align-items: center;
 }
 
-#countryFlag {
+.countryFlag {
     height: 400px;
     width: 600px;
     object-fit: cover;
     border-radius: 5px;
 }
 
-#textBox {
+.textBox {
     height: 90%;
     width: 45%;
     display: flex;
@@ -75,9 +75,9 @@
     margin-right: 15px;
 }
 
-#activities {
+/* #activities {
     height: 80px;   
-}
+} */
 
 .detail {
     font-size: 25px;
