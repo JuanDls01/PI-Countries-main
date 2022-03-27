@@ -42,15 +42,15 @@ const CountryDetail = ({props}) => {
                                 <p className={style.detail}>{specificCountry.subregion}</p>
                             </div>
                             <div className={style.details}>
-                                <h4 className={style.titleText}>Area (m2): </h4>
+                                <h4 className={style.titleText}>Área (m2): </h4>
                                 <p className={style.detail}>{specificCountry.area}</p>
                             </div>
                             <div className={style.details}>
-                                <h4 className={style.titleText}>Population: </h4>
+                                <h4 className={style.titleText}>Población: </h4>
                                 <p className={style.detail}>{specificCountry.population}</p>
                             </div>
                             <div className={style.details}>
-                                <h4 className={style.titleText} >Activities: </h4>
+                                <h4 className={style.titleText} >Actividades: </h4>
                                 {(!specificCountry.activities)? 
                                 specificCountry.activities.map(activity=>{
                                     return (<p key={activity.name} className={style.detail}>{activity.name}</p>)

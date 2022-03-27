@@ -16,7 +16,7 @@ const Paginado = ({allCountries, setCurrentPage}) => {
     //En el onClick le digo que setee las página actual.
     return(
         <nav className={style.NavPaginado}>
-            <p>Pages:</p>
+            <p>Paginas:</p>
             <div className={style.numbers}>
                 {pageNumber && pageNumber.map(number => 
                     <div className={style.number} key={number}>

@@ -10,9 +10,9 @@ const NavBar = () => {
                 <h3>Country App</h3>
             </div>
             <div className={style.nav}>
-                <Link to='/home' className={style.text}>Home</Link>
-                <Link to='/create-activity' className={style.text}>Create Activity</Link>
-                <Link to='/home' className={style.text}>About Me</Link>
+                <Link to='/home' className={style.text}>Inicio</Link>
+                <Link to='/create-activity' className={style.text}>Crear Actividad</Link>
+                <Link to='/home' className={style.text}>Linked In</Link>
             </div>          
         </div>
     )

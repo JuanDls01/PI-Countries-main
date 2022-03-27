@@ -39,7 +39,7 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden, activi
     return (
             <div className={style.filterBox}>
                 <div className={style.containBox}>
-                    <p>Sort by:</p>
+                    <p>Ordenar por:</p>
                     <div className={style.selects}>
                         <select className={style.pointer} required onChange={e => handleSortByPopulation(e)}>
                             <option hidden value='Select'>Population</option>
@@ -53,7 +53,7 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden, activi
                     </div>
                 </div>
                 <div className={style.containBox}>
-                    <p>Filter by:</p>
+                    <p>Filtrar por:</p>
                     <div className={style.selects}>
                         <select className={style.pointer} onChange={e => handleFilterContinent(e)}>
                             <option hidden value='Select'>Continent</option>
@@ -80,7 +80,7 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden, activi
                 </div>
                 <div className={style.containBox}>
                     <SearchBar setCurrentPage={setCurrentPage}/>
-                    <button className={style.pointer} onClick={e=> handleRefresh(e)}>Refresh</button>
+                    <button className={style.pointer} onClick={e=> handleRefresh(e)}>Refrescar países</button>
                 </div>
                 
                 

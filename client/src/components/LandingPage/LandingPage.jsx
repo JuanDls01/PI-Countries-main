@@ -13,12 +13,11 @@ const LandingPage = () => {
     return (
         <div className={style.body}>
             <div className={style.info}>
-                <h1>Hello World!</h1>
+                <h1>Hola Mundo!</h1>
                 <p>
-                En esta página vas a encontrar un listado de países  de todo el mundo, 
-                con increibles actividades turísticas para que realices cuando lo visites. 
-                Al mismo tiempo si conoces alguna actividad que te encanto, podras asociarsela 
-                a uno o más países
+                Country App es una Single Page Application, en donde podras buscar países de todo el mundo,
+                filtrarlos por población o actividad turística, ordenarlos alfabéticamente y según su nivel
+                de población. También podrás crear actividades turísticas y asociarlas a distintos países.
                 </p>
                 <Link to='/home'>
                     <button className={style.startButtom}>
