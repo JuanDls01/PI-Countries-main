@@ -7,9 +7,9 @@ import {useEffect} from 'react';
 import style from './LandingPage.module.css'
 
 const LandingPage = () => {
-    useEffect(()=>{
-        axios.post('http://localhost:3001/')
-    });
+    // useEffect(()=>{
+    //     axios.post('http://localhost:3001/')
+    // });
     return (
         <div className={style.body}>
             <div className={style.info}>

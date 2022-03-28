@@ -13,14 +13,14 @@ const router = Router();
 
 router.use('/countries', countriesRouter);
 router.use('/activity', activitiesRouter);
-router.post('/', async (req, res, next) =>{
-    try{
-        await postApiInfoToCountryDb();
-        res.send('Se busco la info de la API')
-    } catch (error){
-        next(error);
-    }
-});
+// router.post('/', async (req, res, next) =>{
+//     try{
+//         await postApiInfoToCountryDb();
+//         res.send('Se busco la info de la API')
+//     } catch (error){
+//         next(error);
+//     }
+// });
 
 
 module.exports = router;
