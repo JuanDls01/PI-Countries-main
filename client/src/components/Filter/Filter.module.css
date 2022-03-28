@@ -64,6 +64,18 @@
     border-radius: 3px;
 }
 
+.filterBox button:hover {
+    width: 200px;
+    height: 33px;
+    color: #000000;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    background-color: #ffffff;
+    border: 1px solid rgba(172, 172, 172, 0.35);
+    border-radius: 3px;
+}
+
 .pointer {
     cursor: pointer;
 }

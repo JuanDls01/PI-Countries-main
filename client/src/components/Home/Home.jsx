@@ -5,6 +5,7 @@ import { getAllCountries, setActivities } from '../../redux/actions';
 import Filter from '../Filter/Filter';
 import CountryCard from '../CountryCard/CountryCard';
 import Paginado from '../Paginado/Paginado';
+import loader from '../../img/loaderEarth.gif'
 import planet from '../../img/world1.png';
 
 import style from './Home.module.css';
@@ -38,7 +39,9 @@ const Home = () => {
     return (
         <div className={style.Home}>
             <div className={style.containerImg}></div>
-            <div className={style.containerHome}>
+            {
+                allCountries.length>0?
+                <div className={style.containerHome}>
                     <Filter 
                         allCountries={allCountries}
                         getAllCountries={getAllCountries}
@@ -46,24 +49,29 @@ const Home = () => {
                         setCurrentPage={setCurrentPage}
                         activities={activities}
                     />
-                <div className={style.contentBox}>
-                        {
-                            currentCountries && currentCountries.map((country) => {
-                                return <CountryCard 
-                                    key={country.id} 
-                                    id={country.id}
-                                    name={country.name}
-                                    imgFlag={country.imgFlag}
-                                    continent={country.continent}
-                                    />
-                            })
-                        }
+                    <div className={style.contentBox}>
+                            {
+                                currentCountries && currentCountries.map((country) => {
+                                    return <CountryCard 
+                                        key={country.id} 
+                                        id={country.id}
+                                        name={country.name}
+                                        imgFlag={country.imgFlag}
+                                        continent={country.continent}
+                                        />
+                                })
+                            }
+                    </div>
+                    <div className={style.indexBox}>
+                        <Paginado countriesPerPage={countriesPerPage} setCurrentPage={setCurrentPage} allCountries={allCountries.length} />
+                    </div>
+                    
+                </div> :
+                <div className={style.containerHome}>
+                    <img src={loader} alt='loader'/>
                 </div>
-                <div className={style.indexBox}>
-                    <Paginado countriesPerPage={countriesPerPage} setCurrentPage={setCurrentPage} allCountries={allCountries.length} />
-                </div>
-                
-            </div>
+            }
+            
             
         </div>
     )
