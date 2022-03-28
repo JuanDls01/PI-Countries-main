@@ -49,8 +49,7 @@ const Home = () => {
                     />
                     <div className={style.contentBox}>
                             {
-                                currentCountries? 
-                                currentCountries.map((country) => {
+                                currentCountries && currentCountries.map((country) => {
                                     return <CountryCard 
                                         key={country.id} 
                                         id={country.id}
@@ -58,8 +57,7 @@ const Home = () => {
                                         imgFlag={country.imgFlag}
                                         continent={country.continent}
                                         />
-                                }):
-                                <img src={loader} alt='loader' className={style.loader}/>
+                                })
                             }
                     </div>
                     <div className={style.indexBox}>
