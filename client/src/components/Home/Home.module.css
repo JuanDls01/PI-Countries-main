@@ -52,6 +52,9 @@
     border-radius: 5px;
 }
 
+.loader {
+    background-color: black;
+}
 
 
 #cardBox {

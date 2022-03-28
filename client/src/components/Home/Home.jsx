@@ -67,9 +67,8 @@ const Home = () => {
                     </div>
                     
                 </div> :
-                <div className={style.containerHome}>
-                    <img src={loader} alt='loader'/>
-                </div>
+                <img src={loader} alt='loader' className={style.loader}/>
+            
             }
             
             
