@@ -10,12 +10,14 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden, activi
 
     //Handle para ordenar por continentes:
     const handleFilterContinent = (e) => {
-        dispatch(filterCountriesByContinent(e.target.value))
+        dispatch(filterCountriesByContinent(e.target.value));
+        setCurrentPage(1);
     }
 
     //Handle para filtrar por actividad:
     const handleFilterActivity = (e) => {
         dispatch(filterCountriesByActivity(e.target.value));
+        setCurrentPage(1);
     }
 
     //Handle para ordenar por población:
@@ -41,12 +43,13 @@ const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden, activi
                 <div className={style.containBox}>
                     <p>Ordenar por:</p>
                     <div className={style.selects}>
-                        <select className={style.pointer} required onChange={e => handleSortByPopulation(e)}>
-                            <option hidden value='Select'>Population</option>
+                        <select className={style.pointer} onChange={e => handleSortByPopulation(e)}>
+                            <option hidden value='All'>Population</option>
                             <option value='asc'>Ascendente</option>
                             <option value='desc'>Descendente</option>
                         </select>
                         <select className={style.pointer} onChange={e => handleSortByName(e)}>
+                            <option hidden value='All'>Name</option>
                             <option value='a-z'>A-Z</option>
                             <option value='z-a'>Z-A</option>
                         </select>

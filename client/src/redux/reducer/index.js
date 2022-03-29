@@ -5,7 +5,8 @@ import { GET_ALL_COUNTRIES,
         SORT_BY_POPULATION, 
         SORT_BY_NAME, 
         POST_ACTIVITY,
-        GET_COUNTRY_DETAILS } from "../actions";
+        GET_COUNTRY_DETAILS,
+        CLEAN_COUNTRY_DETAILS } from "../actions";
 
 const initialState = {
     countries: [],
@@ -66,14 +67,18 @@ const rootReducer = (state = initialState, action) => {
             }
         }
         case POST_ACTIVITY: {
+            console.log(action.payload.name)
+            // let activityPosted = action.payload.name;
             return {
                 ...state,
-                activities: state.activities.concat(action.payload)
+                // activities: [...action.activities, activityPosted]
             }
         }
         case SORT_BY_POPULATION: {
-            let sortedCountries = action.payload === 'asc' ?
-                state.countries.sort((a,b) => {
+            let sortedCountries;
+            let sortedAllCountries;
+            if (action.payload==='asc'){
+                sortedCountries = state.countries.sort((a,b) => {
                     if(a.population > b.population) { //si a es mayor, lo pone dsps de b
                         return 1;
                     }
@@ -81,8 +86,18 @@ const rootReducer = (state = initialState, action) => {
                         return -1;
                     }
                     return 0 //si son iguales los deja como esta.
-                }):
-                state.countries.sort((a,b) => {
+                })
+                sortedAllCountries = state.allCountries.sort((a,b) => {
+                    if(a.population > b.population) { //si a es mayor, lo pone dsps de b
+                        return 1;
+                    }
+                    if (b.population > a.population) { //si a es menor, lo pone antes de b
+                        return -1;
+                    }
+                    return 0 //si son iguales los deja como esta.
+                })
+            } else {
+                sortedCountries = state.countries.sort((a,b) => {
                     if(a.population > b.population) { //si a es mayor, lo pone dsps de b
                         return -1;
                     }
@@ -91,34 +106,68 @@ const rootReducer = (state = initialState, action) => {
                     }
                     return 0 //si son iguales los deja como esta.
                 })
+                sortedAllCountries = state.allCountries.sort((a,b) => {
+                    if(a.population > b.population) { //si a es mayor, lo pone dsps de b
+                        return -1;
+                    }
+                    if (b.population > a.population) { //si a es menor, lo pone antes de b
+                        return 1;
+                    }
+                    return 0 //si son iguales los deja como esta.
+                })
+            }
             return {
                 ...state,
-                countries: sortedCountries
+                countries: sortedCountries,
+                allCountries: sortedAllCountries
             }
         }
         case SORT_BY_NAME: {
-            let sortedCountries = action.payload === 'a-z' ?
-            state.countries.sort((a,b) => {
-                if(a.name > b.name) { //si a es mayor, lo pone dsps de b
-                    return 1;
-                }
-                if (b.name > a.name) { //si a es menor, lo pone antes de b
-                    return -1;
-                }
-                return 0 //si son iguales los deja como esta.
-            }):
-            state.countries.sort((a,b) => {
-                if(a.name > b.name) { //si a es mayor, lo pone dsps de b
-                    return -1;
-                }
-                if (b.name > a.name) { //si a es menor, lo pone antes de b
-                    return 1;
-                }
-                return 0 //si son iguales los deja como esta.
-            })
+            let sortedCountries;
+            let sortedAllCountries;
+            if (action.payload==='a-z'){
+                sortedCountries = state.countries.sort((a,b) => {
+                    if(a.name > b.name) { //si a es mayor, lo pone dsps de b
+                        return 1;
+                    }
+                    if (b.name > a.name) { //si a es menor, lo pone antes de b
+                        return -1;
+                    }
+                    return 0 //si son iguales los deja como esta.
+                })
+                sortedAllCountries = state.allCountries.sort((a,b) => {
+                    if(a.name > b.name) { //si a es mayor, lo pone dsps de b
+                        return 1;
+                    }
+                    if (b.name > a.name) { //si a es menor, lo pone antes de b
+                        return -1;
+                    }
+                    return 0 //si son iguales los deja como esta.
+                })
+            } else {
+                sortedCountries = state.countries.sort((a,b) => {
+                    if(a.name > b.name) { //si a es mayor, lo pone dsps de b
+                        return -1;
+                    }
+                    if (b.name > a.name) { //si a es menor, lo pone antes de b
+                        return 1;
+                    }
+                    return 0 //si son iguales los deja como esta.
+                })
+                sortedAllCountries = state.allCountries.sort((a,b) => {
+                    if(a.name > b.name) { //si a es mayor, lo pone dsps de b
+                        return -1;
+                    }
+                    if (b.name > a.name) { //si a es menor, lo pone antes de b
+                        return 1;
+                    }
+                    return 0 //si son iguales los deja como esta.
+                })
+            }
             return {
                 ...state,
-                countries: sortedCountries
+                countries: sortedCountries,
+                allCountries: sortedAllCountries
             }
         }
         case GET_COUNTRY_DETAILS: {
@@ -127,26 +176,12 @@ const rootReducer = (state = initialState, action) => {
                 details: action.payload,
             }
         }
-        // case FILTER_BY_ACTIVITIES: {
-        //     const allCountries = state.allCountries;
-        //     const countries = action.payload === 'All'? allCountries : allCountries.filter(country => {
-        //         country.activities.forEach(activity => {
-        //             if (activity === action.payload) return true;
-        //     })})
-        // }
-        // case SET_ACTIVITIES: {
-        //     console.log(state.allCountries);
-        //     let allActivities=state.allCountries.map(countries => countries.activities.map(activity => activity));
-            
-        //     // const actNotDuplicated = allActivities.filter((ele, pos) => {
-        //     //     return allActivities.indexOf(ele) === pos;
-        //     // })
-        //     console.log(allActivities);
-        //     return {
-        //         ...state,
-        //         activities: allActivities,
-        //     }
-        // }
+        case CLEAN_COUNTRY_DETAILS: {
+            return {
+                ...state,
+                details: []
+            }
+        }
         default: {return state}
     }
 

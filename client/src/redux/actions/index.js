@@ -8,6 +8,7 @@ export const SORT_BY_POPULATION = 'SORT_BY_POPULATION';
 export const SORT_BY_NAME = 'SORT_BY_NAME';
 export const GET_NAME_COUNTRIES = 'GET_NAME_COUNTRIES';
 export const GET_COUNTRY_DETAILS = 'GET_COUNTRY_DETAILS';
+export const CLEAN_COUNTRY_DETAILS = 'CLEAN_COUNTRY_DETAILS';
 
 export const getAllCountries = () => async (dispatch) => {
     try {
@@ -47,9 +48,6 @@ export const postActivities = (payload) => async (dispatch) => {
     } catch (error) {
         console.log('El post activities fallo')
     }
-
-    
-
 }
 
 export const filterCountriesByContinent = (payload) => {
@@ -91,5 +89,11 @@ export const getCountryDetail = (idPais) => async (dispatch) => {
         })
     } catch (error) {
         console.log('El getCountryDetail fallo')
+    }
+}
+
+export const cleanCountryDetail = () => {
+    return {
+        type: CLEAN_COUNTRY_DETAILS,
     }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountryDetail } from '../../redux/actions';
+import { getCountryDetail, cleanCountryDetail } from '../../redux/actions';
 import style from './CountryDetail.module.css'
 
 const CountryDetail = ({props}) => {
@@ -13,7 +13,13 @@ const CountryDetail = ({props}) => {
     
     useEffect(() => {
         dispatch(getCountryDetail(idPais))
-    }, [dispatch])
+    }, [])
+
+    useEffect(() => {
+        return () => {
+            dispatch(cleanCountryDetail())
+        }
+    },[])
     
     const specificCountry = useSelector((state) => state.details);
     

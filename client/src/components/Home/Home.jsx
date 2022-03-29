@@ -21,6 +21,7 @@ const Home = () => {
 
     //Traigo el estado countries
     const allCountries = useSelector((state) => state.countries);
+    console.log(allCountries)
     const activities = useSelector(state => state.activities);
 
     //currentPage para que si cambio de página el home se vuelva a renderizar:

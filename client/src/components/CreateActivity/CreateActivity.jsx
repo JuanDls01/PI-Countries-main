@@ -42,7 +42,7 @@ const CreateActivity = () => {
     //Por si llego a ir desde la langing page hasta el create Activity:
     useEffect(()=>{
         dispatch(getAllCountries());
-    }, [dispatch]);
+    }, []);
 
     //Guardo la info de la actividad a crear:
     const [input, setInput] = useState({
