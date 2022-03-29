@@ -4,7 +4,7 @@ import {filterCountriesByContinent, sortByName, sortByPopulation, filterCountrie
 import style from './Filter.module.css';
 import SearchBar from '../SearchBar/SearchBar.jsx'
 
-const Filter = ({allCountries, getAllCountries, setCurrentPage, setOrden, activities}) => {
+const Filter = ({getAllCountries, setCurrentPage, setOrden, activities}) => {
     //Función para despachar:
     const dispatch = useDispatch();
 

@@ -4,40 +4,50 @@ import { useDispatch, useSelector } from 'react-redux';
 import {postActivities, getAllCountries} from '../../redux/actions';
 import style from './CreateActivity.module.css';
 
-export const validate = (input) => {
-        console.log(input)
-        let errors = {};
-        if (!input.name){
-            errors.name = 'No se olvide de escribir un nombre';
-        }
-        if (!input.description){
-            errors.description = 'Por favor introduzca una breve descripción';
-        }
-        if(!input.difficulty){
-            errors.difficulty = 'Por favor introduzca un nivel de dificultad';
-        } else if (input.difficulty<1 || input.difficulty>5){
-            errors.difficulty = 'El nivel de dificultad debe estar entre 1 y 5';
-        }
-        if (!input.duration){
-            errors.duration = 'Por favor introduzca el número de horas que dura la actividad'
-        } else if (input.duration<1 || input.duration>48){
-            errors.duration = 'Los valores aceptados son de 1 a 48 hs'
-        }
-        if (!input.season){
-            errors.season = 'Por favor marque una temporalidad'
-        }
-        if (input.countries.length < 1){
-            errors.countries = 'Seleccione almenos un país'
-        }
-        console.log(errors)
-        return errors;
+export const validate = (input, activities) => {
+    console.log(activities);
+    let errors = {};
+    let testSpace = /^\S+/; //reg exp que no permite espacios en blanco al inicio 
+    if (!input.name){
+        errors.name = 'No se olvide de escribir un nombre';
+    } else if(!testSpace.test(input.name)){
+        errors.name = 'No se permiten espacios en blanco al inicio del nombre'
     }
+    for (let i=0; i<activities.length;i++){
+        const activityLower = activities[i].toLowerCase();
+        if(input.name.toLowerCase()===activities[i]) errors.name = 'Esa actividad ya existe'
+    }
+    if (!input.description){
+        errors.description = 'Por favor introduzca una breve descripción';
+    } else if(!testSpace.test(input.description)){
+        errors.description = 'No se permiten espacios en blanco al inicio de la descripción'
+    }
+    if(!input.difficulty){
+        errors.difficulty = 'Por favor introduzca un nivel de dificultad';
+    } else if (input.difficulty<1 || input.difficulty>5){
+        errors.difficulty = 'El nivel de dificultad debe estar entre 1 y 5';
+    }
+    if (!input.duration){
+        errors.duration = 'Por favor introduzca el número de horas que dura la actividad'
+    } else if (input.duration<1 || input.duration>48){
+        errors.duration = 'Los valores aceptados son de 1 a 48 hs'
+    }
+    if (!input.season){
+        errors.season = 'Por favor marque una temporalidad'
+    }
+    if (input.countries.length < 1){
+        errors.countries = 'Seleccione almenos un país'
+    }
+    console.log(errors)
+    return errors;
+}
 
 const CreateActivity = () => {
     const dispatch = useDispatch();
 
     //Me guardo los países en allCountries
     const allCountries = useSelector((state) => state.countries);
+    const activities = useSelector(state => state.activities);
 
     //Por si llego a ir desde la langing page hasta el create Activity:
     useEffect(()=>{
@@ -66,7 +76,7 @@ const CreateActivity = () => {
         setErrors(validate({
             ...input,
             [e.target.name]: e.target.value,
-        }));
+        }, activities));
     }
 
     const handleSelect2= (e) => {

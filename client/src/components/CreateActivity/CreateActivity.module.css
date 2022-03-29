@@ -81,6 +81,7 @@
     border: 5px;
     border-color: #ECECEC;
     border-radius: 5px;
+    padding-left: 4px;
 }
 
 .inputDescription input {
@@ -89,6 +90,7 @@
     border: 5px;
     border-color: #ECECEC;
     border-radius: 5px;
+    padding-left: 4px;
 }
 
 .selectForm {

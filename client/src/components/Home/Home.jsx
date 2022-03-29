@@ -17,11 +17,13 @@ const Home = () => {
     //Una vez montado traigo toda la info:
     useEffect(()=>{
         dispatch(getAllCountries());
-    }, [dispatch]);
+    }, []);
 
     //Traigo el estado countries
-    const allCountries = useSelector((state) => state.countries);
-    console.log(allCountries)
+    const allCountries = useSelector((state) => state.allCountries);
+    const countries = useSelector((state) => state.countries);
+    console.log(allCountries);
+    console.log(countries);
     const activities = useSelector(state => state.activities);
 
     //currentPage para que si cambio de página el home se vuelva a renderizar:
@@ -34,7 +36,7 @@ const Home = () => {
     currentPage === 1? countriesPerPage = 9: countriesPerPage = 10;
     const indexOfLastCountry = currentPage * countriesPerPage;
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-    const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
+    const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
 
 
     return (
@@ -42,7 +44,7 @@ const Home = () => {
             <div className={style.containerImg}></div>
                 <div className={style.containerHome}>
                     <Filter 
-                        allCountries={allCountries}
+                        countries={countries}
                         getAllCountries={getAllCountries}
                         setOrden={setOrden}
                         setCurrentPage={setCurrentPage}
@@ -50,6 +52,10 @@ const Home = () => {
                     />
                     <div className={style.contentBox}>
                             {
+                                allCountries.length > 0 && countries.length === 0?
+                                <div className={style.countryNotFound}>
+                                    <p>El país introducido no se ha encontrado en la base de datos. Intente con otro nombre</p>
+                                </div>:
                                 currentCountries && currentCountries.map((country) => {
                                     return <CountryCard 
                                         key={country.id} 
@@ -62,7 +68,7 @@ const Home = () => {
                             }
                     </div>
                     <div className={style.indexBox}>
-                        <Paginado countriesPerPage={countriesPerPage} setCurrentPage={setCurrentPage} allCountries={allCountries.length} />
+                        <Paginado countriesPerPage={countriesPerPage} setCurrentPage={setCurrentPage} countries={countries.length} />
                     </div>
                     
                 </div>

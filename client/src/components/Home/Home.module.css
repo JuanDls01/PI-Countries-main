@@ -56,6 +56,22 @@
     background-color: black;
 }
 
+.countryNotFound {
+    height: 250px;
+    width: 600px;
+    /* background-color: #acacac95; */
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(186, 87, 87);
+    border-radius: 10px;
+}
+
+.countryNotFound p {
+    color: #ffffff;
+    font-size: 25px;
+    margin: 10px;
+}
+
 
 #cardBox {
     width: 900px;
