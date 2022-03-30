@@ -8,7 +8,7 @@ export const validate = (value) => {
     let error='';
     let testSpace = /^\S+/;
     if(!testSpace.test(value)){
-        error = 'Intenta no poner espacios al inicio para realizar la búsqueda'
+        error = 'No se permiten espacios en blanco al inicio para realizar la búsqueda';
     }
     return error;
 
@@ -31,8 +31,9 @@ const SearchBar = ({setCurrentPage}) => {
     //Despacho la acción una vez submiteado:
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(!error)
-        if(!error){
+        if (!name) {
+            alert('Intenta introduciendo un nombre de un país')
+        } else if(!error){
             dispatch(getNameCountries(name));
         } else {
             alert(error)

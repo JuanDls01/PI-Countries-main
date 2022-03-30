@@ -40,15 +40,34 @@ export const validate = (input, activities) => {
     if (input.countries.length < 1){
         errors.countries = 'Seleccione almenos un país'
     }
+    // for(let i = 0; i<input.countries.length-1; i++){
+    //     for(let j = 1; j<input.countries.length; j++){
+    //         if(input.countries[i] === input.countries[j]) {
+    //             errors.countries = 'No se permiten países repetidos'
+    //             break;
+    //         }
+    //     }
+    // }
     console.log(errors)
     return errors;
+}
+
+export const countryRepeat = (input, e) => {
+    let repeat = false
+    for (let i = 0; i< input.countries.length; i++){
+        if (e.target.value === input.countries[i]){
+            repeat = true;
+            break;
+        }
+    }
+    return repeat;
 }
 
 const CreateActivity = () => {
     const dispatch = useDispatch();
 
     //Me guardo los países en allCountries
-    const allCountries = useSelector((state) => state.countries);
+    let allCountries = useSelector((state) => state.countries);
     const activities = useSelector(state => state.activities);
 
     //Por si llego a ir desde la langing page hasta el create Activity:
@@ -89,19 +108,24 @@ const CreateActivity = () => {
         setErrors(validate({
             ...input,
             season: e.target.value,
-        }));
+        }, activities));
     }
 
     const handleSelect = (e) => {
-        setInput ({
-            ...input,
-            countries: [...input.countries, e.target.value]
-        })
-        setErrors(validate({
-            ...input,
-            countries: [...input.countries, e.target.value],
-        }));
-        console.log(input.countries)
+        let repeat = countryRepeat(input, e);
+        if(repeat){
+            alert('No se permite repetir países')
+        } else {
+            setInput ({
+                ...input,
+                countries: [...input.countries, e.target.value]
+            })
+            setErrors(validate({
+                ...input,
+                countries: [...input.countries, e.target.value],
+            }, activities));
+            console.log(input.countries)
+        }
     }
 
     const handleSubmit = (e) => {
@@ -123,8 +147,11 @@ const CreateActivity = () => {
         setInput({
             ...input,
             countries: input.countries.filter(country => country !== countryDelete)
-        })
-        console.log(input)
+        }, activities)
+        setErrors(validate({
+            ...input,
+            countries: input.countries.filter(country => country !== countryDelete)
+        }, activities));
     }
 
     const cleanInputs = () => {
