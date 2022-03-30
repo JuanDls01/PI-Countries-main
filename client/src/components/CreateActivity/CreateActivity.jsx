@@ -10,6 +10,8 @@ export const validate = (input, activities) => {
     let testSpace = /^\S+/; //reg exp que no permite espacios en blanco al inicio 
     if (!input.name){
         errors.name = 'No se olvide de escribir un nombre';
+    } else if (input.name.length<2) {
+        errors.name='No se permiten actividades de una sola letra'
     } else if(!testSpace.test(input.name)){
         errors.name = 'No se permiten espacios en blanco al inicio del nombre'
     }
