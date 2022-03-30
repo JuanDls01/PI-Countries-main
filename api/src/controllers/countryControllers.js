@@ -21,8 +21,9 @@ const postApiInfoToCountryDb = async () => {
     await Country.bulkCreate(apiInfo);
 };
 
-const getSpecificCountry = async (idPais) => {
-    const specificCountry = await Country.findOne({
+const getSpecificCountry = (idPais) => {
+    console.log('entre')
+    Country.findOne({
         where: {
             id: idPais,
         },
@@ -30,8 +31,10 @@ const getSpecificCountry = async (idPais) => {
             model: Activity,
             attributes: ['name', 'difficulty', 'duration', 'season' ]
         },
-    });
-    return specificCountry;
+    }).then((response)=>{
+        console.log(response);
+        return(response);
+    })
 }
 
 const getSpecificCountries = async (name) => {
@@ -43,9 +46,7 @@ const getSpecificCountries = async (name) => {
     const specificInfo = await Country.findAll({
         where: {
             name: {
-                [Op.or]: { 
-                    [Op.like]: `%${nameUpper}%`
-                }
+                [Op.like]: `%${nameUpper}%`
             }
         }
     })

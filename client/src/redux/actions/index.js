@@ -10,15 +10,22 @@ export const GET_NAME_COUNTRIES = 'GET_NAME_COUNTRIES';
 export const GET_COUNTRY_DETAILS = 'GET_COUNTRY_DETAILS';
 export const CLEAN_COUNTRY_DETAILS = 'CLEAN_COUNTRY_DETAILS';
 
-export const getAllCountries = () => async (dispatch) => {
+export const getAllCountries = () => (dispatch) => {
     try {
-        let json = await axios.get('/countries'); // /countries
-        return dispatch(
-            {
-                type: GET_ALL_COUNTRIES,
-                payload: json.data
-            }
-        );
+        axios.get('/countries')
+            .then((response) => {
+                const json = response.data;
+                console.log(json);
+                return json;
+            })
+            .then((json) => {
+                return dispatch(
+                    {
+                        type: GET_ALL_COUNTRIES,
+                        payload: json
+                    }
+                )
+            })
     } catch (error) {
         console.log('El getAllCountries fallo')
     }
