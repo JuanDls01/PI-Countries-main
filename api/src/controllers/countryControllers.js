@@ -35,16 +35,17 @@ const getAllDbInfo = async () => {
 };
 
 const getSpecificCountry = async (idPais) => {
-    const countryDetail = await Country.findOne({
+    Country.findOne({
         where: {
             id: idPais,
         },
         include: {
             model: Activity,
             attributes: ['name', 'difficulty', 'duration', 'season' ]
-        },
+        }
+    }).then((countryDetail) => {
+        return countryDetail
     })
-    return countryDetail;
 }
 
 const nameToUpperCase = (name) =>{
