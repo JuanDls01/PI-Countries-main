@@ -6,12 +6,11 @@ let callApi = false;
 
 router.get('/', async (req, res, next) => {
     try {
-        let allCountries = getAllDbInfo();
+        let allCountries = await getAllDbInfo();
         if(allCountries.length === 0){
-            console.log('Entre al if')
             await postApiInfoToCountryDb();
         }
-        allCountries = getAllDbInfo();
+        allCountries = await getAllDbInfo();
         const {name} = req.query;
         if (name) {
             let specificCountries = await getSpecificCountries(name)

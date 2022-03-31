@@ -21,8 +21,8 @@ const postApiInfoToCountryDb = async () => {
     await Country.bulkCreate(apiInfo);
 };
 
-const getAllDbInfo = () => {
-    Country.findAll({
+const getAllDbInfo = async () => {
+    const dbInfo = await Country.findAll({
         include: {
             model: Activity,
             attributes: ['name'],
@@ -30,7 +30,8 @@ const getAllDbInfo = () => {
                 attributes: [],
             }
         }
-    }).then((dbInfo) => dbInfo)
+    })
+    return dbInfo
 };
 
 const getSpecificCountry = async (idPais) => {

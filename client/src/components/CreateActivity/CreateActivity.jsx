@@ -17,7 +17,7 @@ export const validate = (input, activities) => {
     }
     for (let i=0; i<activities.length;i++){
         const activityLower = activities[i].toLowerCase();
-        if(input.name.toLowerCase()===activities[i]) errors.name = 'Esa actividad ya existe'
+        if(input.name.toLowerCase()===activities[i].toLowerCase()) errors.name = 'Esa actividad ya existe'
     }
     if (!input.description){
         errors.description = 'Por favor introduzca una breve descripción';

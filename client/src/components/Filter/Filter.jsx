@@ -37,6 +37,7 @@ const Filter = ({getAllCountries, setCurrentPage, setOrden, activities}) => {
     //Handle para refrescar y cargar todos los paises:
     const handleRefresh = (e) => {
         dispatch(getAllCountries())
+        setCurrentPage(1);
     }
     return (
             <div className={style.filterBox}>
