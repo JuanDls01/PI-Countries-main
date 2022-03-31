@@ -22,6 +22,7 @@ const CountryDetail = ({props}) => {
     },[])
     
     const specificCountry = useSelector((state) => state.details);
+    console.log(specificCountry.activities)
     
     return (
         <div className={style.container}>
@@ -57,7 +58,7 @@ const CountryDetail = ({props}) => {
                             </div>
                             <div className={style.details}>
                                 <h4 className={style.titleText} >Actividades: </h4>
-                                {(!specificCountry.activities)? 
+                                {(specificCountry.activities.length>0)? 
                                 specificCountry.activities.map(activity=>{
                                     return (<p key={activity.name} className={style.detail}>{activity.name}</p>)
                                 }):

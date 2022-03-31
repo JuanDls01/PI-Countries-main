@@ -45,13 +45,15 @@ export const getNameCountries = (name) => async (dispatch) => {
     
 }
 
-export const postActivities = (payload) => async (dispatch) => {
+export const postActivities = (payload) => (dispatch) => {
     try {
-        let json = await axios.post('/activity', payload) // /activity
-        return dispatch({
-            type: POST_ACTIVITY,
-            payload
-        })
+        axios.post('/activity', payload)
+            .then(()=>{
+                return dispatch({
+                    type: POST_ACTIVITY,
+                    payload
+                })
+            })
     } catch (error) {
         console.log('El post activities fallo')
     }

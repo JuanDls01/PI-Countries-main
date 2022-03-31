@@ -21,9 +21,20 @@ const postApiInfoToCountryDb = async () => {
     await Country.bulkCreate(apiInfo);
 };
 
-const getSpecificCountry = (idPais) => {
-    console.log('entre')
-    Country.findOne({
+const getAllDbInfo = () => {
+    Country.findAll({
+        include: {
+            model: Activity,
+            attributes: ['name'],
+            through: {
+                attributes: [],
+            }
+        }
+    }).then((dbInfo) => dbInfo)
+};
+
+const getSpecificCountry = async (idPais) => {
+    const countryDetail = await Country.findOne({
         where: {
             id: idPais,
         },
@@ -31,18 +42,21 @@ const getSpecificCountry = (idPais) => {
             model: Activity,
             attributes: ['name', 'difficulty', 'duration', 'season' ]
         },
-    }).then((response)=>{
-        console.log(response);
-        return(response);
     })
+    return countryDetail;
 }
 
-const getSpecificCountries = async (name) => {
-    //Trabajo los nombres para que si o si coincidan con los de mi db:
+const nameToUpperCase = (name) =>{
+    //Trabaja el nombre que introdujo el usuario para que coincida con la db:
     const nameLower = name.toLowerCase();
     const nameArr = nameLower.split(' ');
     const nameArrUpper = nameArr.map(word => word.charAt(0).toUpperCase() + word.slice(1));
     const nameUpper = nameArrUpper.join(' ');
+    return nameUpper;
+}
+
+const getSpecificCountries = async (name) => {
+    const nameUpper = nameToUpperCase(name) // aRGenTinA -> Argentina
     const specificInfo = await Country.findAll({
         where: {
             name: {
@@ -53,20 +67,6 @@ const getSpecificCountries = async (name) => {
     //console.log(specificInfo);
     return specificInfo;
 }
-
-const getAllDbInfo = async () => {
-    const dbInfo = await Country.findAll({
-        include: {
-            model: Activity,
-            attributes: ['name'],
-            through: {
-                attributes: [],
-            }
-        }
-    })
-    //console.log(dbInfo);
-    return dbInfo;
-};
 
 
 module.exports = {
