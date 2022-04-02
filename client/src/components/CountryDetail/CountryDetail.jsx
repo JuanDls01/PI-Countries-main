@@ -26,52 +26,54 @@ const CountryDetail = ({props}) => {
     
     return (
         <div className={style.container}>
+            <div className={style.elipse1}></div>
             {
                 specificCountry.id ?
                 <div className={style.detailsBox}>
-                    <div>
-                        <Link to='/home'><button className={style.backHome}>Volver</button></Link>
-                    </div>
-                    <h1 className={style.countryName}>{specificCountry.name}</h1>
-                    <div className={style.infoBox}>
+                    <div className={style.containImg}>
                         <img src={specificCountry.imgFlag} alt='Imagen Bandera' className={style.countryFlag} />
-                        <div className={style.textBox}>
-                            <div className={style.details}>
-                                <h4 className={style.titleText}>ID: </h4>
-                                <p className={style.detail}>{specificCountry.id}</p>
-                            </div>
-                            <div className={style.details}>
-                                <h4 className={style.titleText}>Capital: </h4>
-                                <p className={style.detail}>{specificCountry.capital}</p>
-                            </div>
-                            <div className={style.details}>
-                                <h4 className={style.titleText}>Subregion: </h4>
-                                <p className={style.detail}>{specificCountry.subregion}</p>
-                            </div>
-                            <div className={style.details}>
-                                <h4 className={style.titleText}>Área (m2): </h4>
-                                <p className={style.detail}>{specificCountry.area}</p>
-                            </div>
-                            <div className={style.details}>
-                                <h4 className={style.titleText}>Población: </h4>
-                                <p className={style.detail}>{specificCountry.population}</p>
-                            </div>
-                            <div className={style.details}>
-                                <h4 className={style.titleText} >Actividades: </h4>
-                                {(specificCountry.activities.length>0)? 
-                                specificCountry.activities.map(activity=>{
-                                    return (<p key={activity.name} className={style.detail}>{activity.name}</p>)
-                                }):
-                                <p className={style.detail}>Aún no hay actividades asignadas a este país</p>}
-                                
-                            </div>
-                            
                     </div>
+                    <div className={style.textBox}>
+                        <h1 className={style.countryName}>{specificCountry.name}</h1>
+                        <div className={style.details}>
+                            <h4 className={style.detail}>ID: </h4>
+                            <p className={style.detail}>{specificCountry.id}</p>
+                        </div>
+                        <div className={style.details}>
+                            <h4 className={style.detail}>Capital: </h4>
+                            <p className={style.detail}>{specificCountry.capital}</p>
+                        </div>
+                        <div className={style.details}>
+                            <h4 className={style.detail}>Subregion: </h4>
+                            <p className={style.detail}>{specificCountry.subregion}</p>
+                        </div>
+                        <div className={style.details}>
+                            <h4 className={style.detail}>Área (m2): </h4>
+                            <p className={style.detail}>{specificCountry.area}</p>
+                        </div>
+                        <div className={style.details}>
+                            <h4 className={style.detail}>Población: </h4>
+                            <p className={style.detail}>{specificCountry.population}</p>
+                        </div>
+                        <div className={style.details}>
+                            <h4 className={style.detail} >Actividades: </h4>
+                            {(specificCountry.activities.length>0)? 
+                            specificCountry.activities.map(activity=>{
+                                return (<p key={activity.name} className={style.detail}>{activity.name}</p>)
+                            }):
+                            <p className={style.detail}>Aún no hay actividades asignadas a este país</p>}
+                            
+                        </div>
+                        
+                        <div className={style.backButton}>
+                            <Link to='/home'><button className={style.backHome}>Volver</button></Link>
+                        </div>
                     </div>
                     
                 </div>:
                 <div>Algo salio mal</div>
             }
+            <div className={style.elipse2}></div>
         </div>
     )
 }

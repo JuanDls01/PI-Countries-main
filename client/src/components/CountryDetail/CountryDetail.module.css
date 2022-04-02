@@ -1,29 +1,30 @@
 .container {
-    height: 1240px;
-    width: 100%;
+    height: 800px;
     display: flex;
+    padding: 0px 60px;
+    align-items: center;
+    background: #1F1D2B;
     justify-content: center;
-    /* align-items: center; */
-    padding-top: 140px;
-    background-image: url('../../img/world3.png');
-    background-size: 100% 100%;
 }
 
 .detailsBox {
-    background-color: #dbd8d8ab;
-    height: 800px;
-    width: 1300px;
+    /* background-color: #dbd8d82e; */
+    height: 600px;
+    width: 1000px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     /* flex-direction: column; */
 }
 
 .backHome {
-    width: 70px;
-    height: 38px;
-    margin:10px;
-    background-color: #464655;
+    width: 200px;
+    height: 50px;
+    background: linear-gradient(to right, #7AABED, #41479B);
     color: #ffffff;
-    font-size: 13px;
+    font-size: 18px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -32,11 +33,28 @@
     border: none;
     font-weight: bold;
     cursor:pointer;
+    font-family: 'Poppins';
+}
+.backButton a {
+    text-decoration: none;
+    cursor:pointer;
+}
+.backButton {
+    margin-top: 10px;
 }
 
 .countryName {
-    font-size: 55px;
+    height: 70px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 82px;
+    text-align: left;
     color: #ffffff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .infoBox {
@@ -48,15 +66,38 @@
     align-items: center;
 }
 
+.containImg {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* background: linear-gradient(169.44deg, rgba(58, 129, 191, 0.08) 1.85%, rgba(65, 48, 90, 0.08) 98.72%);
+    backdrop-filter: blur(1110px); */
+    /* Note: backdrop-filter has minimal browser support */
+    background: linear-gradient(#1F1D2B, #1F1D2B) padding-box,
+    linear-gradient(168.82deg, #7AABED 1.7%, rgba(155, 111, 238, 0) 28.19%, rgba(123, 127, 234, 0) 69.97%, #41479B 99.52%) border-box;
+    border-radius: 35.0246px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+
+    
+
+
+    /* background: linear-gradient(to bottom right, #b6b6b688, #70707054) linear-gradient(to right, #7AABED, #41479B); */
+}
+
 .countryFlag {
-    height: 400px;
-    width: 600px;
+    height: 200px;
+    width: 300px;
     object-fit: cover;
     border-radius: 5px;
 }
 
 .textBox {
-    height: 90%;
+    height: 380px;
     width: 45%;
     display: flex;
     flex-direction: column;
@@ -64,7 +105,7 @@
 }
 
 .details {
-    height: 60px;
+    height: 30px;
     display: flex;
     align-items: center;
     color: #ffffff;
@@ -80,7 +121,40 @@
 } */
 
 .detail {
-    font-size: 25px;
+    /* font-size: 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    
+    font-weight:lighter;
+    line-height: 44px; */
 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    margin-right: 15px;
+    font-weight: 550;
+    text-align: left;
+    color: #FFFFFF;
+    line-height: 35px;
+}
+
+.elipse1 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 815px;
+    top: 200px;
+    background: #7AABED;
+    filter: blur(100px);
+}
+
+.elipse2 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 1200px;
+    top: 600px;
+
+    background: #41479B;
+    filter: blur(100px);
 }
 
