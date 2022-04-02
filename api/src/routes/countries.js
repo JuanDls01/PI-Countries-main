@@ -27,14 +27,13 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.get('/:idPais', (req,res,next) =>{
+router.get('/:idPais', async (req,res,next) =>{
     try {
         const {idPais} = req.params;
-        getSpecificCountry(idPais).then((specificCountry)=>{
-            specificCountry?
-            res.status(200).json(specificCountry) :
-            res.status(404).send('No está el país, sorry');
-        })
+        let specificCountry = await getSpecificCountry(idPais)
+        specificCountry ?
+        res.status(200).json(specificCountry) :
+        res.status(404).send('No está el país, sorry');
     } 
     catch (error) {
         next(error);

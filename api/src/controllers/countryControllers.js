@@ -21,31 +21,17 @@ const postApiInfoToCountryDb = async () => {
     await Country.bulkCreate(apiInfo);
 };
 
-const getAllDbInfo = async () => {
-    const dbInfo = await Country.findAll({
-        include: {
-            model: Activity,
-            attributes: ['name'],
-            through: {
-                attributes: [],
-            }
-        }
-    })
-    return dbInfo
-};
-
 const getSpecificCountry = async (idPais) => {
-    Country.findOne({
+    const specificCountry = await Country.findOne({
         where: {
             id: idPais,
         },
         include: {
             model: Activity,
             attributes: ['name', 'difficulty', 'duration', 'season' ]
-        }
-    }).then((countryDetail) => {
-        return countryDetail
-    })
+        },
+    });
+    return specificCountry;
 }
 
 const nameToUpperCase = (name) =>{
@@ -58,17 +44,33 @@ const nameToUpperCase = (name) =>{
 }
 
 const getSpecificCountries = async (name) => {
-    const nameUpper = nameToUpperCase(name) // aRGenTinA -> Argentina
+    const nameUpper = nameToUpperCase(name);
     const specificInfo = await Country.findAll({
         where: {
             name: {
-                [Op.like]: `%${nameUpper}%`
+                [Op.or]: { 
+                    [Op.like]: `%${nameUpper}%`
+                }
             }
         }
     })
     //console.log(specificInfo);
     return specificInfo;
 }
+
+const getAllDbInfo = async () => {
+    const dbInfo = await Country.findAll({
+        include: {
+            model: Activity,
+            attributes: ['name'],
+            through: {
+                attributes: [],
+            }
+        }
+    })
+    //console.log(dbInfo);
+    return dbInfo;
+};
 
 
 module.exports = {

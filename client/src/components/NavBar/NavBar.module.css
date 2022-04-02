@@ -1,41 +1,49 @@
 .navbar {
-    height: 60px;
+    height: 50px;
     width: 90%;
     /* background-color: #00000056; */
     /* background: linear-gradient(to bottom right, #0f336083, #262641); */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px rgba(237, 237, 237, 0.26) solid;
+    /* border-bottom: 2px rgba(237, 237, 237, 0.26) solid; */
 }
 
-/* @font-face {
-	font-family: "spartan-regular";
-	src: url('../../fonts/Spartan/static/Spartan-Regular.ttf');
-    src: url('../../fonts/Spartan/static/Spartan-SemiBold.ttf');
-} */
-
 .logo {
-    height: 66px;
-    width: 264px;
+    height: 25px;
+    width: 243px;
     /* margin-left: 52px; */
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
 }
 
 .logo h3 {
-    font-family: 'Spartan', sans-serif;
-    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
     font-weight: bold;
     color:#F5F5F5;
+    background: linear-gradient(to right, #7AABED, #41479B);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    mix-blend-mode: screen;
 }
 
 .text {
-    color: #F5F5F5;
-    font-size: 25px;
+    color: #d6d2d2;
+    font-size: 15px;
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+.inicio {
+    font-size: 15px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #ffffff, #7AABED);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .nav {
