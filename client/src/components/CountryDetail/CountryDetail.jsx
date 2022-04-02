@@ -61,7 +61,7 @@ const CountryDetail = ({props}) => {
                             specificCountry.activities.map(activity=>{
                                 return (<p key={activity.name} className={style.detail}>{activity.name}</p>)
                             }):
-                            <p className={style.detail}>Aún no hay actividades asignadas a este país</p>}
+                            <p className={style.detail}>No hay actividades asignadas</p>}
                             
                         </div>
                         

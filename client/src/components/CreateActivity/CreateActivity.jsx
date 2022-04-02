@@ -171,16 +171,18 @@ const CreateActivity = ({history}) => {
 
     return(
         <div className={style.container}>
+            <div className={style.elipse1}></div>
+            <div className={style.elipse2}></div>
             <div className={style.formBox}>
-                <div className={style.backBox}>
+                {/*<div className={style.backBox}>
                     <Link to='/home'><button className={style.backHome}>Volver</button></Link>
-                </div>
+                </div>*/}
                 
                 <h1>Crear Actividad</h1>
-                <form onSubmit={e=>handleSubmit(e)}>
-                    <div className={style.inputName}>
-                        <label className={style.formLabel}>Nombre: </label>
-                        <input 
+                <form className={style.formComponent} onSubmit={e=>handleSubmit(e)}>
+                    <div className={style.inputComponent}>
+                        <label className={style.formLabel}>NOMBRE</label>
+                        <input
                         type='text'
                         value={input.name}
                         name='name'
@@ -190,8 +192,8 @@ const CreateActivity = ({history}) => {
                             <p className={style.errors}>{errors.name}</p>
                         )}
                     </div>
-                    <div className={style.inputDescription}>
-                        <label className={style.formLabel}>Descripción: </label>
+                    <div className={style.inputComponent}>
+                        <label className={style.formLabel}>DESCRIPCIÓN</label>
                         <input
                         type='text'
                         value={input.description}
@@ -203,7 +205,7 @@ const CreateActivity = ({history}) => {
                         )}
                     </div>
                     <div className={style.inputComponent}>
-                        <label className={style.formLabel}>Dificultad: </label>
+                        <label className={style.formLabel}>DIFICULTAD</label>
                         <input
                         className={style.indputGeneric}
                         type='number'
@@ -217,7 +219,7 @@ const CreateActivity = ({history}) => {
                         )}
                     </div>
                     <div className={style.inputComponent}>
-                        <label className={style.formLabel}>Duración (hs.): </label>
+                        <label className={style.formLabel}>DURACIÓN (HS.)</label>
                         <input
                             className={style.indputGeneric}
                             type='number'
@@ -230,7 +232,7 @@ const CreateActivity = ({history}) => {
                         )}
                     </div>
                     <div className={style.inputComponent}>
-                        <label className={style.formLabel}>Temporada ideal para realizarla: </label>
+                        <label className={style.formLabel}>TEMPORADA</label>
                         <select className={style.selectForm} onChange={(e) => handleSelect2(e)}>
                             <option hidden value='Temporada'>Temporada</option>
                             <option value='winter'>Invierno</option>
@@ -243,7 +245,7 @@ const CreateActivity = ({history}) => {
                         )}
                     </div>
                     <div className={style.inputComponent}>
-                        <label className={style.formLabel}>En que paises se realiza la actividad: </label>
+                        <label className={style.formLabel}>PAÍSES</label>
                         <select className={style.selectForm} onChange={(e) => handleSelect(e)}>
                             <option hidden value='Paises'>Seleccione aquí</option>
                             {allCountries.map(country => (
@@ -258,20 +260,24 @@ const CreateActivity = ({history}) => {
                         {input.countries.map(country => {
                             return (
                                 <div key={country} className={style.countrySelected}>
-                                    <h4>{country}</h4>
+                                    <div className={style.closeCountry}>
                                     <button onClick={()=>onClose(country)}>X</button>
+                                    </div>
+                                    <h4>{country}</h4>
                                 </div>
                             )
                         })}
                         {/* <ul><li>{input.countries.map(country => country + ', ')}</li></ul> */}
                     </div>
-                    <input type='button' className={style.buttons} onClick={(e)=>cleanInputs(e)} value='Limpiar campos'/>
-                    <div>
-                        {
-                            (Object.keys(errors).length === 0 && input.countries.length>0 ? 
-                            <button type='submit' className={style.buttons}>Crear Actividad</button>
-                            : null)
-                        }
+                    <div className={style.buttonsContainer}>
+                        <div>
+                            {
+                                (Object.keys(errors).length === 0 && input.countries.length>0 ? 
+                                <button type='submit' className={style.buttonCreate}>Crear Actividad</button>
+                                : null)
+                            }
+                        </div>
+                        <input type='button' className={style.buttonClean} onClick={(e)=>cleanInputs(e)} value='Limpiar'/>
                     </div>
                     
                     

@@ -1,7 +1,7 @@
 .container {
     height: 800px;
     display: flex;
-    padding: 0px 60px;
+    padding: 0px 40px;
     align-items: center;
     background: #1F1D2B;
     justify-content: center;
@@ -44,12 +44,12 @@
 }
 
 .countryName {
-    height: 70px;
+    height: 100px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: 50px;
-    line-height: 82px;
+    font-size: 35px;
+    /*line-height: 82px;*/
     text-align: left;
     color: #ffffff;
     display: flex;
@@ -67,7 +67,7 @@
 }
 
 .containImg {
-    width: 350px;
+    width: 380px;
     height: 350px;
     display: flex;
     align-items: center;
@@ -98,7 +98,8 @@
 
 .textBox {
     height: 380px;
-    width: 45%;
+    width: 450px;
+    padding-left: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
