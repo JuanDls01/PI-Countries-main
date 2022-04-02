@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {postActivities, getAllCountries} from '../../redux/actions';
 import style from './CreateActivity.module.css';
 
-export const validate = (input, activities) => {
-    console.log(activities);
+export const validate = (input) => {
+    // console.log(activities);
     let errors = {};
     let testSpace = /^\S+/; //reg exp que no permite espacios en blanco al inicio 
     if (!input.name){
@@ -15,10 +15,10 @@ export const validate = (input, activities) => {
     } else if(!testSpace.test(input.name)){
         errors.name = 'No se permiten espacios en blanco al inicio del nombre'
     }
-    for (let i=0; i<activities.length;i++){
-        const activityLower = activities[i].toLowerCase();
-        if(input.name.toLowerCase()===activities[i].toLowerCase()) errors.name = 'Esa actividad ya existe'
-    }
+    // for (let i=0; i<activities.length;i++){
+    //     const activityLower = activities[i].toLowerCase();
+    //     if(input.name.toLowerCase()===activities[i].toLowerCase()) errors.name = 'Esa actividad ya existe'
+    // }
     if (!input.description){
         errors.description = 'Por favor introduzca una breve descripción';
     } else if(!testSpace.test(input.description)){
@@ -63,12 +63,14 @@ export const countryRepeat = (input, e) => {
     return repeat;
 }
 
-const CreateActivity = () => {
+const CreateActivity = ({history}) => {
     const dispatch = useDispatch();
+    // const {history} = props;
+    console.log(history);
 
     //Me guardo los países en allCountries
     let allCountries = useSelector((state) => state.countries);
-    const activities = useSelector(state => state.activities);
+    // const activities = useSelector(state => state.activities);
 
     //Por si llego a ir desde la langing page hasta el create Activity:
     useEffect(()=>{
@@ -97,7 +99,7 @@ const CreateActivity = () => {
         setErrors(validate({
             ...input,
             [e.target.name]: e.target.value,
-        }, activities));
+        }));
     }
 
     const handleSelect2= (e) => {
@@ -108,7 +110,7 @@ const CreateActivity = () => {
         setErrors(validate({
             ...input,
             season: e.target.value,
-        }, activities));
+        }));
     }
 
     const handleSelect = (e) => {
@@ -123,7 +125,7 @@ const CreateActivity = () => {
             setErrors(validate({
                 ...input,
                 countries: [...input.countries, e.target.value],
-            }, activities));
+            }));
             console.log(input.countries)
         }
     }
@@ -141,17 +143,18 @@ const CreateActivity = () => {
             season: '',
             countries: [],
         })
+        history.push('/home')
     }
 
     const onClose = (countryDelete) => {
         setInput({
             ...input,
             countries: input.countries.filter(country => country !== countryDelete)
-        }, activities)
+        })
         setErrors(validate({
             ...input,
             countries: input.countries.filter(country => country !== countryDelete)
-        }, activities));
+        }));
     }
 
     const cleanInputs = () => {
@@ -163,7 +166,6 @@ const CreateActivity = () => {
             season: '',
             countries: [],
         })
-        setErrors({})
 
     }
 
@@ -266,7 +268,9 @@ const CreateActivity = () => {
                     <input type='button' className={style.buttons} onClick={(e)=>cleanInputs(e)} value='Limpiar campos'/>
                     <div>
                         {
-                            (Object.keys(errors).length === 0 && input.countries.length>0 ? <button type='submit' className={style.buttons}>Crear Actividad</button>: null)
+                            (Object.keys(errors).length === 0 && input.countries.length>0 ? 
+                            <button type='submit' className={style.buttons}>Crear Actividad</button>
+                            : null)
                         }
                     </div>
                     

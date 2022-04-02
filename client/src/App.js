@@ -15,7 +15,7 @@ function App() {
       </div>
         <Route exact path= '/' render={() => <LandingPage />} />
         <Route path='/home' render={() => <Home />} />
-        <Route path='/create-activity' render={() => <CreateActivity />} />
+        <Route path='/create-activity' render={({history}) => <CreateActivity history={history}/>} />
         <Route path='/country/:idPais' render={(match) => <CountryDetail props={match}/>} />
     </div>
   );
