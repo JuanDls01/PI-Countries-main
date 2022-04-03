@@ -270,13 +270,11 @@ const CreateActivity = ({history}) => {
                         {/* <ul><li>{input.countries.map(country => country + ', ')}</li></ul> */}
                     </div>
                     <div className={style.buttonsContainer}>
-                        <div>
-                            {
-                                (Object.keys(errors).length === 0 && input.countries.length>0 ? 
-                                <button type='submit' className={style.buttonCreate}>Crear Actividad</button>
-                                : null)
-                            }
-                        </div>
+                        {
+                            (Object.keys(errors).length === 0 && input.countries.length>0 ? 
+                            <button type='submit' className={style.buttonCreate}>Crear Actividad</button>
+                            : null)
+                        }
                         <input type='button' className={style.buttonClean} onClick={(e)=>cleanInputs(e)} value='Limpiar'/>
                     </div>
                     

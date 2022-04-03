@@ -105,43 +105,6 @@ p {
     /*background-color: #1F1D2B;*/
 }
 
-/*.inputComponent {
-    width: 700px;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.inputComponent input {
-    width: 280px;
-    height: 35px;
-    border: 5px;
-    border-color: #ECECEC;
-    border-radius: 5px;
-}
-
-
-
-
-.inputDescription {
-    width: 700px;
-    height: 140px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-
-
-.inputDescription input {
-    width: 500px;
-    height: 80px;
-    border: 5px;
-    border-color: #ECECEC;
-    border-radius: 5px;
-    padding-left: 4px;
-}*/
-
 
 
 .errors {
@@ -189,6 +152,7 @@ p {
     width: 100%;
     height: 15px;
     justify-content: flex-end;
+    cursor: pointer;
 }
 
 .backHome {
