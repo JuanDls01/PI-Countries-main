@@ -5,6 +5,10 @@
   top:0;
   left:0;
   background: #1F1D2B;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .pointer {

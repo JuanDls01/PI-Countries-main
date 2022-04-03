@@ -15,10 +15,6 @@ export const validate = (input) => {
     } else if(!testSpace.test(input.name)){
         errors.name = 'No se permiten espacios en blanco al inicio del nombre'
     }
-    // for (let i=0; i<activities.length;i++){
-    //     const activityLower = activities[i].toLowerCase();
-    //     if(input.name.toLowerCase()===activities[i].toLowerCase()) errors.name = 'Esa actividad ya existe'
-    // }
     if (!input.description){
         errors.description = 'Por favor introduzca una breve descripción';
     } else if(!testSpace.test(input.description)){
@@ -40,14 +36,6 @@ export const validate = (input) => {
     if (input.countries.length < 1){
         errors.countries = 'Seleccione almenos un país'
     }
-    // for(let i = 0; i<input.countries.length-1; i++){
-    //     for(let j = 1; j<input.countries.length; j++){
-    //         if(input.countries[i] === input.countries[j]) {
-    //             errors.countries = 'No se permiten países repetidos'
-    //             break;
-    //         }
-    //     }
-    // }
     console.log(errors)
     return errors;
 }

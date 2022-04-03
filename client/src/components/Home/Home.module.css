@@ -3,6 +3,7 @@
     /* background: linear-gradient(to bottom right, #ffffff, #a8a8a8); */
     /* background-image: url('../../img/ny.png');
     background-size: 100% 100%; */
+    width: 100%;
 }
 
 .containerImg {
@@ -22,6 +23,7 @@
 .containerHome {
     /* padding-top: 110px; */
     /* height: 930px; */
+
     display: flex;
     flex-direction: column;
 }
@@ -29,7 +31,7 @@
 
 .contentBox {
     width: 100%;
-    height: 930px;
+    /*height: 930px;*/
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
