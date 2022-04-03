@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Paginado.module.css';
 
-const Paginado = ({countries, setCurrentPage}) => {
+const Paginado = ({countries, setCurrentPage, currentPage}) => {
     const pageNumber = [];
     console.log(pageNumber)
 
@@ -17,12 +17,13 @@ const Paginado = ({countries, setCurrentPage}) => {
     //En el onClick le digo que setee las página actual.
     return(
         <nav className={style.NavPaginado}>
-            <p>Paginas:</p>
             <div className={style.numbers}>
                 {pageNumber && pageNumber.map(number => 
-                    <div className={style.number} key={number}>
-                        <a onClick={()=>paginado(number)}>{number}</a>
-                    </div>
+                    <a onClick={()=>paginado(number)}>
+                        <div className={number === currentPage? style.selectNumber: style.number} key={number}>
+                            <p>{number}</p>
+                        </div>
+                    </a>
                 )}
             </div>
         </nav>

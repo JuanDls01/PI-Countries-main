@@ -4,9 +4,13 @@
     margin: 20px 20px;
     /* background-color: #ECECEC; */
     /* background: linear-gradient(to bottom right, #b6b6b688, #70707054);; */
+
     border-width: 1px;
     border-style: solid;
-    border-color: #ffffff60;
+    background: linear-gradient(#1F1D2B, #1F1D2B) padding-box,
+    linear-gradient(168.82deg, #7AABED 1.7%, rgba(155, 111, 238, 0) 28.19%, rgba(123, 127, 234, 0) 69.97%, #41479B 99.52%) border-box;
+    border-color: transparent;
+    /*border-color: #ffffff60;*/
     /* border-color: #e10858b9; */
     border-radius: 5px;;
     display: flex;
@@ -18,7 +22,10 @@
 .Card:hover {
     width: 205px;
     height: 227px;
-    border: 4px solid #ffffff;
+    border: 3px solid;
+    background: linear-gradient(#1F1D2B, #1F1D2B) padding-box,
+    linear-gradient(168.82deg, #7AABED 1.7%, rgba(155, 111, 238, 0) 28.19%, rgba(123, 127, 234, 0) 69.97%, #41479B 99.52%) border-box;
+    border-color: transparent;
     /* border: 3px solid #374658; */
 }
 
@@ -35,6 +42,10 @@
 .Card:hover img {
     width: 205px;
     object-fit: cover;
+}
+
+.Card a {
+    text-decoration: none;
 }
 
 .Card h3 {
@@ -57,7 +68,7 @@
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
     display: flex;
-    border-top: 1px #e4e3e39f solid;
+    border-top: 1px #41479B solid;
     padding: 10px 10px;
     align-items: flex-start;
     /* height: 20px; */

@@ -1,5 +1,5 @@
 .container {
-    height: 800px;
+    height: 100%;
     display: flex;
     padding: 0px 40px;
     align-items: center;
@@ -142,7 +142,7 @@
     position: absolute;
     width: 100px;
     height: 100px;
-    left: 815px;
+    left: 400px;
     top: 200px;
     background: #7AABED;
     filter: blur(100px);
@@ -152,8 +152,8 @@
     position: absolute;
     width: 100px;
     height: 100px;
-    left: 1200px;
-    top: 600px;
+    left: 800px;
+    top: 400px;
 
     background: #41479B;
     filter: blur(100px);

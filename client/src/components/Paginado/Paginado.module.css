@@ -4,6 +4,7 @@
     justify-content: space-around;
     align-items: center;
     height: inherit;
+    width: 100%;
 }
 
 .NavPaginado p {
@@ -19,15 +20,38 @@
 }
 
 .number {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #185BC3;
+    box-sizing: border-box;
     margin: 3px;
-    width: 20px;
-    border-width: thin;
-    border-style: solid;
-    border-color: #ACACAC;
-    border-radius: 2px;
+    border-radius: 3px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.number a {
+.selectNumber {
+    width: 30px;
+    height: 30px;
+    /*border: 1px solid #185BC3;*/
+    box-sizing: border-box;
+    background: #185BC3;;
+    margin: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selectNumber p {
     color: #ffffff;
+    font-size: 12px;
+}
+
+.number p {
+    color: #185BC3;
+    font-size: 12px;
 }

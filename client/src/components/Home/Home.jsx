@@ -41,37 +41,42 @@ const Home = () => {
 
     return (
         <div className={style.Home}>
-            <div className={style.containerImg}></div>
-                <div className={style.containerHome}>
-                    <Filter 
-                        countries={countries}
-                        getAllCountries={getAllCountries}
-                        setOrden={setOrden}
-                        setCurrentPage={setCurrentPage}
-                        activities={activities}
-                    />
-                    <div className={style.contentBox}>
-                            {
-                                allCountries.length > 0 && countries.length === 0?
-                                <div className={style.countryNotFound}>
-                                    <p>El país introducido no se ha encontrado en la base de datos. Intente con otro nombre</p>
-                                </div>:
-                                currentCountries && currentCountries.map((country) => {
-                                    return <CountryCard 
-                                        key={country.id} 
-                                        id={country.id}
-                                        name={country.name}
-                                        imgFlag={country.imgFlag}
-                                        continent={country.continent}
-                                        />
-                                })
-                            }
-                    </div>
+            <div className={style.elipse1}></div>
+            <div className={style.elipse2}></div>
+            <div className={style.containerHome}>
+                <Filter 
+                    countries={countries}
+                    getAllCountries={getAllCountries}
+                    setOrden={setOrden}
+                    setCurrentPage={setCurrentPage}
+                    activities={activities}
+                />
+                <div className={style.contentBox}>
+                    {
+                        allCountries.length > 0 && countries.length === 0?
+                        <div className={style.countryNotFound}>
+                            <p>El país introducido no se ha encontrado en la base de datos. Intente con otro nombre</p>
+                        </div>:
+                        <div className={style.contentCards}>
+                            {currentCountries && currentCountries.map((country) => {
+                                return <CountryCard 
+                                    key={country.id} 
+                                    id={country.id}
+                                    name={country.name}
+                                    imgFlag={country.imgFlag}
+                                    continent={country.continent}
+                                    />
+                            })}
+                        </div> 
+                    }
                     <div className={style.indexBox}>
-                        <Paginado countriesPerPage={countriesPerPage} setCurrentPage={setCurrentPage} countries={countries.length} />
+                        <Paginado setCurrentPage={setCurrentPage} countries={countries.length} currentPage={currentPage} />
                     </div>
                     
                 </div>
+                
+                
+            </div>
             
             
         </div>
