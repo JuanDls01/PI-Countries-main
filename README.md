@@ -7,7 +7,6 @@
 Country App es una Single Page Aplication de países, la cual pide información a la API REST Countries, la almacena en su base de datos y luego la  renderiza en una homepage. Además permite al cliente, ordenar los países por población y alfabéticamente, filtrar por continente o actividades, buscar determinados países y crear actividades turísticas. Este proyecto lo realice de manera individual como parte del bootcamp de Soy Henry, cuyo objetivo era afianzar todos los conocimientos aprendidos dentro del curso como ReactJs, Redux, CSS (Styled-Components), HTML, Node.js, Express.js, Sequelize y PostgreSQL.
 </br>
 
-<h3>Link al Deploy🚀: https://country-app-psi.vercel.app/</h3> 
 
 <h2>Algunas imagenes 📷</h2>
 
